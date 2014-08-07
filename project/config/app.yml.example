@@ -11,6 +11,7 @@ all:
     dn: cn=admin,dc=interloire,dc=tld
     dc: dc=interloire,dc=tld
     pass: pass
+    autoupdate: false
   ad:
     defaultuser: user
     defaultpassword: pass
