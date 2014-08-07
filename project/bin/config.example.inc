@@ -25,5 +25,6 @@ SAMBA_XLSOFT_IP=
 SAMBA_XLSOFT_SHARE=
 SAMBA_XLSOFT_DIR=
 DEV_EMAILS="test@example.org test2@example.org"
+REPLICATE_TELEDECLARATION_URL="http://url_to_replicate/database"
 
 mkdir -p $TMP > /dev/null

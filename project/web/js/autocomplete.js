@@ -226,12 +226,13 @@
 
 				input.on('autocompleteopen', function()
 				{	
+                                        console.log($(this).data('url')); 
 					var autocomplete_courant = $(this).data("autocomplete").menu.element;
 
 					if(!autocomplete_courant.find('.btn_ajout_autocomplete').length) {
 
 						autocomplete_courant.append(
-							'<li class="btn_ajout_autocomplete"><a href="#">' 
+							'<li class="btn_ajout_autocomplete"><a href="'+select.data('url')+'">' 
 							+ select.data('btn-ajout-txt') + 
 							'</a></li>'
 						);

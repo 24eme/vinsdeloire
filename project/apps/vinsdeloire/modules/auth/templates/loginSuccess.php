@@ -20,6 +20,9 @@
             </div>
         </div>
         </form>
+
+        <a href="<?php echo url_for('compte_teledeclarant_code_creation') ?>">Creation de compte</a><br />
+        <a href="<?php echo url_for('compte_teledeclarant_mot_de_passe_oublie') ?>">Mot de passe oublié</a>
     </div>
 </div>
 

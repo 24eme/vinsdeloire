@@ -16,8 +16,8 @@
 .type_vin_vrac,
 .type_vin_bouteille
 {
-    .ir(22px);
-    background: url(../images/pictos/sprite_type.png) no-repeat;
+    .ir(22px, 22px);
+    background: url(../images/pictos/sprite_type.png) no-repeat; 
     display:inline-block;
 }
 
@@ -53,16 +53,92 @@
 
     .stats_contrats
     {
-        float: left;
-        color: #d00815;
-
-        li
-        {
-            &:before
+        overflow: hidden;
+        
+        li {            
+            float: left;
+            padding: 30px 10px 0;            
+            background-color: #ecebeb;
+            border: 1px solid #e3e2e2;
+            border-radius: 5px;
+            .box(210px, 100px,5px,10px);
+            div.action{
+                a
                 {
-                .triangle-r(10px, 5px, #d00815);
-                margin: 0 5px 0 0;
+                    vertical-align: bottom;
+
+                }
+                .opacite(0.3);
             }
+            
+            div.actif{
+                .opacite(1);
+            }
+        }
+        .stats_contrats_brouillon h2
+	{
+            text-align: center;
+            position: relative;
+            
+            &:before {
+		.sprite-pictos-brouillon(0 0);
+                content: '';                
+		height: 40px;
+		width: 40px;     
+                display: inline-block;
+                position: absolute;
+                top: -12px;
+                left: 5px;
+            }
+	}
+        
+        .stats_contrats_a_signer h2
+	{
+            position: relative;
+            text-align: center;
+            
+            &:before {
+		.sprite-pictos-a_signer(0 0);
+                content: '';                
+		height: 40px;
+		width: 40px;     
+                display: inline-block;
+                position: absolute;
+                top: -12px;
+                left: 23px;
+            }
+	}
+        
+        .stats_contrats_en_attente h2
+	{
+            text-align: center;
+            position: relative;
+            
+            &:before {
+		.sprite-pictos-contrat_en_attente(0 0);
+                content: '';                
+		height: 40px;
+		width: 40px;     
+                display: inline-block;
+                position: absolute;
+                top: -12px;
+                left: 10px;
+            }
+	}
+
+
+    }
+
+
+    .liens_contrat_teledeclaration {
+        float: left;
+        color: #000000;
+
+
+        &:before
+            {
+            .triangle-r(10px, 5px, #000000);
+            margin: 0 5px 0 0;
         }
     }
 
@@ -385,6 +461,7 @@
 
         #vrac_marche_volumePropose {
             label:first-child { width:215px; }
+            .vrac_volume_propose_panel{ min-height:100px; }
         }
 
         #label .checkbox_list { float: left; }

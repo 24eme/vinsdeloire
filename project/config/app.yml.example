@@ -19,6 +19,9 @@ all:
     basedn: dc=interloire,dc=tld
     host: localhost
     port: 389
+  mail:
+    from_email: email@email.com
+    from_name: "From name"
   alertes:
     generations:
       #Contrats non soldé
