@@ -1,0 +1,34 @@
+
+Annuaire:
+  definition:
+    fields:
+      _id: {  }
+      _rev: {  }
+      recoltants:
+        type: collection
+        class: AnnuaireRecoltant
+        inheritance: _AnnuaireTiers
+        definition:
+          fields:
+            '*': { }
+      negociants:
+        type: collection
+        class: AnnuaireNegociant
+        inheritance: _AnnuaireTiers
+        definition:
+          fields:
+            '*': { }
+      caves_cooperatives:
+        type: collection
+        class: AnnuaireCaveCooperative
+        inheritance: _AnnuaireTiers
+        definition:
+          fields:
+            '*': { }
+      commerciaux:
+        type: collection
+        definition:
+          fields:
+            '*': { }
+      identifiant: {  }
+      type: {  }
