@@ -1,0 +1,102 @@
+
+# Sv12
+SV12:
+  definition:
+    fields:
+      _id: {  }
+      _rev: { }
+      type: { }
+      identifiant: {  }
+      campagne: {  }
+      periode: {  }
+      version: {  }
+      region: { }
+      numero_archive: {  }
+      declarant:        
+        type: collection
+        definition:
+          fields:            
+            nom: {  }
+            raison_sociale: {  }
+            cvi: {  }
+            no_accises: {   }
+            adresse: {  }
+            commune: {  }
+            code_postal: {   }
+            region: {  }
+      totaux:
+        type: collection
+        definition:
+          fields:            
+            volume_raisins: { type: float }
+            volume_mouts: { type: float }
+            volume_ecarts: { type: float }
+            produits:
+              type: collection
+              definition:
+                fields:
+                  '*':
+                    type: collection
+                    definition:
+                      fields:
+                        produit_hash: {  }
+                        volume_raisins: { type: float }
+                        volume_mouts: { type: float }
+                        volume_ecarts: { type: float }
+      contrats:
+        type: collection
+        definition:
+          fields:
+            '*':
+              class: SV12Contrat
+              type: collection
+              definition:
+                fields:
+                  contrat_numero: {  }
+                  contrat_type: {  }
+                  produit_libelle: {  }
+                  produit_hash: {  }
+                  produit_hash: {  }
+                  vendeur_identifiant: {  }
+                  vendeur_nom: {  }
+                  volume_prop: { type : float }
+                  volume: { type : float }
+                  cvo: { type: float }
+      mouvements:
+        type: collection
+        definition:
+          fields:
+            '*':
+              type: collection
+              definition:
+                fields:
+                  '*':
+                    class: SV12Mouvement
+                    inheritance: Mouvement
+                    type: collection
+                    definition:
+                      fields:
+                        categorie: {  }
+                        produit_hash: {  }
+                        produit_libelle: {  }
+                        type_hash: {  }
+                        type_libelle: {  }
+                        vrac_numero: {  }
+                        vrac_destinataire: {  }
+                        detail_identifiant: {  }
+                        detail_libelle: {  }
+                        volume: { type: float }
+                        cvo: { type: float }
+                        region: {}
+                        facture: { type: integer }
+                        facturable: { type: integer }
+                        date: {  }
+                        date_version: {  }
+                        version: {  }
+      valide:
+        type: collection
+        definition:
+          fields:
+            date_saisie: {  }
+            statut: {  }
+
