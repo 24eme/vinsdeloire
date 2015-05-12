@@ -1,0 +1,6 @@
+all:
+  ldap:
+    serveur: "xxx.xxx.xxx.xxx"
+    dn: "cn=xxxxx,dc=xxxxx,dc=xxxxx"
+    dc: "dc=xxxxx,dc=xxxxx"
+    pass: "*****"
