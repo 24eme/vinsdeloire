@@ -1,0 +1,1 @@
+<?php include_component('produit', 'index', array('rev' => $rev)); ?>
