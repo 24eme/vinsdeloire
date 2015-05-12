@@ -1,0 +1,139 @@
+
+# Vrac pour les contrats
+Vrac:
+  definition:
+    fields:
+      _id: {  }
+      _rev: { }
+      type: { }
+      campagne: {  }
+      numero_contrat: {  }
+      numero_archive: {  }
+      etape: { type: integer }
+      interne: { }
+      createur_identifiant: { require:false }
+      teledeclare: { require:false }
+      interlocuteur_commercial:
+        type: collection
+        definition:
+          fields:
+            nom: {  }
+            email: {  }
+            telephone: {  }
+#Soussigné (Part 1)
+      vendeur_identifiant: {  }
+      vendeur:        
+        type: collection
+        definition:
+          fields:            
+            nom: {  }
+            raison_sociale: {  }
+            cvi: {  }
+            no_accises: {   }
+            no_tva_intracomm: {    }
+            adresse: {  }
+            commune: {  }
+            code_postal: {   }
+            region: {   }
+      acheteur_identifiant: {  }
+      acheteur:
+        type: collection
+        definition:
+          fields:
+            nom: {  }
+            raison_sociale: {  }
+            cvi: {  }
+            no_accises: {   }
+            no_tva_intracomm: {    }
+            adresse: {  }
+            commune: {  }
+            code_postal: {   }
+            region: {   }
+      mandataire_exist: {   }
+      mandatant: 
+        type: array_collection
+        definition:
+          fields:
+            '*': {  }
+      mandataire_identifiant: {  }
+      mandataire:
+        type: collection
+        definition:
+          fields:
+            nom: {  }
+            raison_sociale: {  }
+            carte_pro: {  }
+            adresse: {  }
+            commune: {  }
+            code_postal: {   }
+
+#Marché (Part 2)
+
+      attente_original: { type: integer }
+      type_transaction: {  }
+      produit: {   }
+      produit_libelle: {   }
+      millesime: { type: integer }
+      categorie_vin: {   } # Générique ou domaine
+      domaine: {  }
+      label:
+        type: array_collection
+        definition:
+          fields:
+            '*': {  }
+
+      #Pour le raisin (en kg)
+      raisin_quantite: { type: float }
+
+      #Pour les mouts et pour le vin en vrac (en hl)
+      jus_quantite: { type: float }
+
+      #Pour le vin en bouteilles (nb bouteille)
+      bouteilles_quantite: { type: integer }
+      bouteilles_contenance_volume: { type: float }
+      bouteilles_contenance_libelle: { type: string }
+
+      prix_initial_unitaire: { type: float }
+      prix_initial_unitaire_hl: { type: float }
+      prix_initial_total: { type: float }
+
+      prix_unitaire: { type: float }
+      prix_unitaire_hl: { type: float }
+      prix_total: { type: float }
+
+#Conditions (Part 3)
+
+      type_contrat: {   }
+      prix_variable: { type: integer }
+
+      # prix_variable = true
+      part_variable: { type: float }
+
+      cvo_nature: { }
+      #cvo_repartition float ou string? "50/50" ou 0.5
+      cvo_repartition: { }
+
+      #commentaires
+      commentaire: { }
+
+#Validations
+      date_campagne: { }
+      date_signature: { }
+
+      volume_propose: { type: float }
+      volume_enleve: { type: float }
+      
+      enlevement_date: {  }
+      enlevement_frais_garde: { type: float }
+
+      valide:
+        type: collection
+        definition:
+          fields:
+            # les vues de date_campagne/date_signature dans part3
+            date_saisie: {  }
+            identifiant: {  }
+            statut: { }
+            date_signature_vendeur: { require:false }
+            date_signature_acheteur: { require:false }
+            date_signature_courtier: { require:false }
