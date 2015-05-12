@@ -1,0 +1,46 @@
+#schema des DS
+DS:
+  definition:
+    fields:
+      _id: {}
+      _rev: {}
+      type: {}
+      identifiant: {}
+      date_emission: {}
+      date_echeance: {}
+      date_stock: {}
+      drm_origine: {}
+      campagne: {}
+      periode: {}
+      numero_archive: {  }
+      statut: {}
+      commentaire: {}
+      declarant:
+        type: collection
+        definition:
+          fields:
+            nom: {  }
+            raison_sociale: {  }
+            cvi: {  }
+            no_accises: {   }
+            adresse: {  }
+            commune: {  }
+            code_postal: {   }
+            region: {  }
+      declarations:
+        type: collection
+        definition:
+          fields:
+            '*':
+              class: DSProduit
+              type: collection
+              definition:
+                fields:
+                  code_produit: { }
+                  produit_libelle: {}
+                  produit_hash: {}
+                  stock_initial: { type: float }
+                  stock_declare: { type: float }
+                  vci: { type: float }
+                  reserve_qualitative: { type: float }
+                  stock_elaboration: { type: float, required: false }
