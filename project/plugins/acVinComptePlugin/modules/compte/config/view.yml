@@ -1,0 +1,7 @@
+## YAML Template.
+default:
+  components:
+    colContacts: [societe, getInterlocuteursWithSuspendus]
+addremovetagSuccess:
+  http_metas:
+    refresh: 1

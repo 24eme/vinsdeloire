@@ -1,0 +1,18 @@
+login:
+  is_secure: false
+logout:
+  is_secure: false
+first:
+  is_secure: false
+creation:
+  is_secure: false
+motDePasseOublie:
+ is_secure: false
+motDePasseOublieLogin:
+ is_secure: false  
+motDePasseOublieConfirm:
+ is_secure: false
+modificationOublie:
+ is_secure: false  
+
+

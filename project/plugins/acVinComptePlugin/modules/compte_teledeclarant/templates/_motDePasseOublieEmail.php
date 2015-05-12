@@ -1,0 +1,1 @@
+Bonjour <?php echo $compte->nom ?>,\n\n vous avez oublié votre mot de passe pour le redéfinir merci de cliquer sur le lien suivant : <?php echo $lien ?>\n\n Cordialement, \n\n Le CIVA

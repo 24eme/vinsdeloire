@@ -1,0 +1,69 @@
+Compte:
+  definition:
+    fields:
+      _id: { }
+      _rev: { }
+      type: { }
+      identifiant: { }
+      mot_de_passe: { }
+      civilite: { }
+      prenom: { }
+      nom: { }
+      mot_de_passe: { }
+      nom_a_afficher: {}
+      fonction: { }
+      commentaire: { }
+      origines:
+        type: array_collection
+        definition:
+          fields:
+             '*': { }
+      id_societe: { }
+      adresse_societe: {  }
+      adresse: { }
+      adresse_complementaire: { }
+      code_postal: { }
+      commune: { }
+      compte_type: { }
+      cedex: {  }
+      pays: {  }
+      email: {  }
+      telephone_perso: {  }
+      telephone_bureau: {  }
+      telephone_mobile: {  }
+      fax: {  }
+      site_internet: { required: false }
+      nom_a_afficher: {  }
+      raison_sociale_societe: { required: false }
+      type_societe: { required: false }
+      societe_informations:
+        type: collection
+        definition:
+          fields:
+            type: { }
+            raison_sociale: { }
+            adresse: {  }
+            adresse_complementaire: {  }
+            code_postal: {  }
+            commune: {  }
+            email: {  }
+            telephone: {  }
+            fax: {  }
+      interpro: {  }
+      statut: {  }
+      tags:
+        type: collection
+        definition:
+          fields:
+            '*':
+              type: array_collection
+              definition:
+                fields:
+                  '*': {}
+      droits:
+        type: array_collection
+        required: false
+        definition:
+          fields:
+            '*': { }
+ 

@@ -1,0 +1,3 @@
+all:
+  ac_vin_compte:
+    couchdb_prefix: "COMPTE-"

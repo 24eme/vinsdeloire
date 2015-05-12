@@ -1,0 +1,1 @@
+Bonjour <?php echo $compte->nom ?>,\n\n votre mot de passe sur le site du CIVA vient d'etre modifié. \n\n Cordialement, \n\n Le CIVA
