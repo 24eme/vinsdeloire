@@ -1,0 +1,70 @@
+#Etablissement
+Etablissement:
+   definition:
+     fields:
+       _id: {  }
+       _rev: {  }
+       type: {  }
+       cooperative: {}
+       interpro: {  }
+       identifiant: {  }
+       id_societe: {  }
+       statut: {  }
+       raisins_mouts: {  }
+       exclusion_drm: {  }
+       relance_ds: {  }
+       recette_locale: 
+         type: collection
+         definition:
+           fields:
+             id_douane: {  }
+             nom: {  }
+             ville: {  }
+       region: {  }
+       type_dr: {  }
+       liaisons_operateurs:
+           type: collection
+           definition:
+             fields:
+               '*':
+                 class: EtablissementLiaisonsOperateurs
+                 type: collection
+                 definition:
+                   fields:
+                     id_etablissement: { }
+                     libelle_etablissement: {}
+                     type_liaison: { }
+                     aliases:
+                       type: collection
+                       definition:
+                         fields:
+                           '*': { }
+       site_fiche: {  }
+       compte: {  }
+       num_interne: {  }
+       raison_sociale: {  }
+       nom: {  }
+       cvi: {  }
+       no_accises: {  }
+       carte_pro: {  }
+       famille: {  }
+       sous_famille: {  }
+       email: {  }
+       telephone: {  }
+       fax: {  }
+       commentaire: {  }
+       siege:
+           type: collection
+           definition:
+             fields:
+               adresse: {  }
+               adresse_complementaire: { required: false }
+               code_postal: {  }
+               commune: {  }
+       comptabilite:
+           type: collection
+           definition:
+             fields:
+               adresse: {  }
+               code_postal: {  }
+               commune: {  }

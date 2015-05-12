@@ -1,0 +1,4 @@
+## YAML Template.
+default:
+  components:
+    colContacts: [societe, getInterlocuteursWithSuspendus]
