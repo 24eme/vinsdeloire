@@ -1,0 +1,10 @@
+all:
+  ac_exception_notifier:
+    enabled: false
+    class: "acExceptionEmailNotifier"
+    format: "html"
+    email:
+      from: "email@email.email"
+      from_name: "acExceptionNotifierPlugin"
+      to: ["email@email.email"]
+      subject: "Internal Server Error (500) : %title%"
