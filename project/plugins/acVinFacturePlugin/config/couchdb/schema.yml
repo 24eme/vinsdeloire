@@ -1,0 +1,98 @@
+#schema des Factures
+Facture:
+  definition:
+    fields:
+      _id: {}
+      _rev: {}
+      type: {}
+      identifiant: {}
+      code_comptable_client: {}
+      numero_facture: {}
+      numero_interloire: {}
+      date_emission: {}
+      date_facturation: {}
+      campagne: {}
+      numero_archive: {  }
+      statut: {}
+      avoir: {required: false}
+      taux_tva: {required: false}
+      region: {}
+      versement_comptable: {type: integer}
+      message_communication: {required: false}
+      emetteur:
+        type: collection
+        definition:
+          fields:
+            adresse: {}
+            code_postal: {}
+            ville: {}
+            service_facturation: {}
+            telephone: {}
+            email: {required: false}
+      declarant:
+        type: collection
+        definition:
+          fields:
+            nom: {  }
+            num_tva_intracomm: {    }
+            adresse: {  }
+            commune: {  }
+            code_postal: {   }
+            raison_sociale: {  }
+      total_ht: {type: float}
+      total_ttc: {type: float}
+      total_taxe: {type: float}
+      lignes:
+        type: collection
+        definition:
+          fields:
+            '*':
+              class: FactureLignes
+              type: array_collection
+              definition:
+                fields:
+                  '*':
+                    class: FactureLigne
+                    type: collection
+                    definition:
+                      fields:
+                        origine_type: {}
+                        origine_identifiant: {}
+                        origine_libelle: {}
+                        origine_date: {}
+                        id_origine: {}
+                        produit_type: {}
+                        produit_libelle: {}
+                        produit_hash: {}
+                        produit_identifiant_analytique: {}
+                        contrat_identifiant: {}
+                        echeance_code: {}
+                        volume: {type: float}
+                        cotisation_taux: {type: float}
+                        montant_ht: {type: float}
+                        origine_mouvements:
+                          type: collection
+                          definition:
+                            fields:
+                              '*':
+                                type: array_collection
+                                definition:
+                                  fields:
+                                    '*': { }
+      echeances:
+        type: array_collection
+        definition:
+          fields:
+            '*':
+              type: collection
+              definition:
+                fields:
+                  echeance_code: {}
+                  echeance_date: {}
+                  montant_ttc: {type: float}
+      origines:
+        type: collection
+        definition:
+          fields:
+            #DRM ou SRV ID => "libelle"
+            '*': {}
