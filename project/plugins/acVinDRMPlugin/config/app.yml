@@ -1,0 +1,18 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+all:
+  drm_etapes:
+    informations:
+      url: "drm_informations"
+    ajouts_liquidations:
+      url: "drm_mouvements_generaux"
+    recapitulatif:
+      url: "drm_recap_redirect"
+    vrac:
+      url: "drm_vrac"
+    declaratif:
+      url: "drm_declaratif"
+    validation:
+      url: "drm_validation"
