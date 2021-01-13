@@ -119,7 +119,7 @@ if (isset($drm)) {
             <p>
                 En cas de besoin n'hésitez pas à consulter le <strong>guide utilisateur</strong> au format pdf.
             </p>
-            <a href="/data/Enregistrez vos DRM en ligne - Guide utilisateur Août 2019.pdf" id="liens_notices" class="lien_telechargement">Télécharger le guide</a>
+            <a href="/data/Enregistrez_vos_DRM_en_ligne-Guide_utilisateur_Janvier_2021.pdf" id="liens_notices" class="lien_telechargement">Télécharger le guide</a>
 
             <h3>Votre contact</h3>
 
