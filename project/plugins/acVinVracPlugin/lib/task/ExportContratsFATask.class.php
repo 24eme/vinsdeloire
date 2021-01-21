@@ -169,7 +169,7 @@ EOF;
             $ligne[self::CSV_FA_ANNEE_RECOLTE] = (substr($contrat->millesime, 0, 4))? substr($contrat->millesime, 0, 4) : substr($contrat->campagne, 0, 4); //??
             $ligne[self::CSV_FA_CODE_ELABORATION] = 'P'; //DISABLED ($contrat->conditionnement_crd == 'NEGOCE_ACHEMINE') ? "P" : "N";
             $ligne[self::CSV_FA_VOLUME] = $this->sprintFloatFr($contrat->volume_propose);
-            $ligne[self::CSV_FA_DEGRE] = "12,5"; //DISABLED sprintf("%0.1f", $contrat->degre);
+            $ligne[self::CSV_FA_DEGRE] = "12.5"; //DISABLED sprintf("%0.1f", $contrat->degre);
             $ligne[self::CSV_FA_PRIX] = $this->sprintFloatFr($contrat->prix_initial_unitaire_hl);
             $ligne[self::CSV_FA_UNITE_PRIX] = 'H';
             $ligne[self::CSV_FA_CODE_CEPAGE] = $this->getCodeCepageFA($contrat, $produit);
