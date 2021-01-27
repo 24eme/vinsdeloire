@@ -155,7 +155,7 @@ class DRMDetail extends BaseDRMDetail {
     protected function update($params = array()) {
         parent::update($params);
 
-        $this->total_debut_mois =   ($this->stocks_fin->exist('revendique'))? $this->stocks_debut->revendique : 0.0;
+        $this->total_debut_mois =   ($this->stocks_fin->exist('revendique') && $this->stocks_debut->exist('revendique'))? $this->stocks_debut->revendique : 0.0;
 
         if ($this->sorties->exist('vrac_details')) {
             $this->sorties->vrac = 0;
