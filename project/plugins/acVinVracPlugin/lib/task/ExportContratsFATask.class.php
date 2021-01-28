@@ -335,7 +335,7 @@ EOF;
     }
 
     private function sprintFloatFr($f) {
-        return preg_replace('/\./', ',', sprintf($f, '0.4f'));
+        return sprintf($f, '0.4f');
     }
 
 }
