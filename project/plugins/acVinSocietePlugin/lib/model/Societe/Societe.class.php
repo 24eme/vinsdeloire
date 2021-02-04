@@ -122,17 +122,22 @@ class Societe extends BaseSociete {
 
     public function getEtablissementPrincipal() {
         $etablissements = $this->getEtablissementsObj();
+        $etabs = array();
         if (!count($etablissements)) {
             return null;
         }
         foreach ($etablissements as $id => $etbObj) {
             $etablissement = $etbObj->etablissement;
+            if ($etablissement->statut == EtablissementClient::STATUT_SUSPENDU) {
+              continue;
+            }
+            $etabs[] = $etbObj;
             $compte = CompteClient::getInstance()->find($etablissement->compte);
             if ($compte->compte_type == CompteClient::TYPE_COMPTE_SOCIETE) {
                 return $etablissement;
             }
         }
-        $etbObj = array_shift($etablissements);
+        $etbObj = array_shift($etabs);
         return $etbObj->etablissement;
     }
 
