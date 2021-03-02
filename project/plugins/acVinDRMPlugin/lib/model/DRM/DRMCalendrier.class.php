@@ -154,7 +154,7 @@ class DRMCalendrier {
         if (!$etablissement) {
             $etablissement = $this->etablissement;
         }
-        return $this->statuts[$etablissement->identifiant][$periode];
+        return (isset($this->statuts[$etablissement->identifiant][$periode]))? $this->statuts[$etablissement->identifiant][$periode] : null;
     }
 
     public function getTransmise($periode, $etablissement = false) {
@@ -302,9 +302,8 @@ class DRMCalendrier {
                 $drmLastWithStatut[$etb->identifiant]->statut = self::STATUT_VALIDEE;
                 $drmLastWithStatut[$etb->identifiant]->periode = null;
             }
-            foreach (array_reverse($this->getPeriodes()) as $periode) {
+            foreach ($this->getPeriodes() as $periode) {
                 $statut = $this->getStatut($periode, $etb);
-                $drmLastWithStatut[$etb->identifiant]->periode = $periode;
                 if ($statut == self::STATUT_EN_COURS) {
                     $drm = DRMClient::getInstance()->findMasterByIdentifiantAndPeriode($etb->identifiant, $periode);
                     $drmLastWithStatut[$etb->identifiant]->drm = $drm;
@@ -317,8 +316,11 @@ class DRMCalendrier {
                 }
                 if ($statut == self::STATUT_NOUVELLE) {
                     $drmLastWithStatut[$etb->identifiant]->statut = self::STATUT_NOUVELLE;
-                    break;
                 }
+                if ($statut == self::STATUT_VALIDEE_NON_TELEDECLARE || $statut == self::STATUT_VALIDEE) {
+                  break;
+                }
+                $drmLastWithStatut[$etb->identifiant]->periode = $periode;
                 $drmLastWithStatut[$etb->identifiant]->drm = DRMClient::getInstance()->findMasterByIdentifiantAndPeriode($etb->identifiant, $periode);
             }
         }
