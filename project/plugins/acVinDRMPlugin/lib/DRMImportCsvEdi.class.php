@@ -1341,7 +1341,9 @@ class DRMImportCsvEdi extends DRMCsvEdi {
             $campagne = sprintf('%s-%s', $annees[0] + 1, $annees[1] + 1);
           }
           $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
-          $vracObj = VracClient::getInstance()->find($vrac);
+          if ($vrac) {
+              $vracObj = VracClient::getInstance()->find($vrac);
+          }
           if((!$vrac || !$vracObj || $vracObj->getVendeurIdentifiant() != $csvRow[self::CSV_IDENTIFIANT])){
               $annees = explode('-', $campagne);
               $campagne = sprintf('%s-%s', $annees[0] - 1, $annees[1] - 1);
