@@ -216,14 +216,12 @@ class DRMCalendrier {
                 }
                 $this->statuts[$etbIdentifiant][$periode] = $statut;
             }
-        }
-        if ($has_en_cours) {
-            foreach($this->statuts as $id => $periodes) {
-                foreach($periodes as $periode => $statuts) {
-                    if ($this->statuts[$id][$periode] ==  self::STATUT_NOUVELLE) {
-                        $this->statuts[$id][$periode] = self::STATUT_NOUVELLE_BLOQUEE;
+            if ($has_en_cours) {
+                    foreach($periodes as $periode => $statuts) {
+                        if ($this->statuts[$etbIdentifiant][$periode] ==  self::STATUT_NOUVELLE) {
+                            $this->statuts[$etbIdentifiant][$periode] = self::STATUT_NOUVELLE_BLOQUEE;
+                        }
                     }
-                }
             }
         }
     }
