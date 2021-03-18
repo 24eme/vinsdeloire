@@ -51,8 +51,11 @@
                                     <?php if ($drmsByEtb->statut == DRMCalendrier::STATUT_VALIDEE): ?>
                                         <?php if ($etablissement->hasLegalSignature()) { ?>
                                             <li class="statut_validee">
-                                                <a href="<?php echo url_for('drm_visualisation', $drmsByEtb->drm); ?>"> <span>Visualiser votre DRM <?php echo getFrPeriodeElision($drmsByEtb->periode); ?>
-                                                    </span></a>
+                                            <?php if ($drmsByEtb->drm && $drmsByEtb->periode): ?>
+                                                <a href="<?php echo url_for('drm_visualisation', $drmsByEtb->drm); ?>">
+                                                    <span>Visualiser votre DRM <?php echo getFrPeriodeElision($drmsByEtb->periode); ?></span>
+                                                </a>
+                                            <?php endif; ?>
                                             </li>
                                             <?php
                                         } else {
