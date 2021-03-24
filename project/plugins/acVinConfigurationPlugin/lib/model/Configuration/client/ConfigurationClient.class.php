@@ -240,16 +240,16 @@ class ConfigurationClient extends acCouchdbClient {
         return date('Ym');
     }
 
-    public function getCountryList($detail_drm = null) {
-        if(is_null($this->countries)) {
-            $destinationChoicesWidget = new sfWidgetFormI18nChoiceCountry(array('culture' => 'fr', 'add_empty' => true));
-            $this->countries = $destinationChoicesWidget->getChoices();
-            $this->countries['inconnu'] = 'Inconnu';
-/*
-			$this->countries['UE'] = 'Union Européenne';
-			$this->countries['paystiers'] = 'Pays tiers';
-*/
-        }
+	public function getCountryList($detail_drm = null) {
+		if(is_null($this->countries)) {
+			$destinationChoicesWidget = new sfWidgetFormI18nChoiceCountry(array('culture' => 'fr', 'add_empty' => true));
+			$this->countries = $destinationChoicesWidget->getChoices();
+			$this->countries['inconnu'] = 'Inconnu';
+			if (sfContext::getInstance()->getUser()->isTeledeclarationMode()) {
+                $this->countries['UE'] = 'Union Européenne';
+				$this->countries['paystiers'] = 'Pays tiers';
+			}
+		}
 				if($detail_drm){
 						$drm = $detail_drm->getDocument();
 						$cvo_taux = ($detail_drm instanceof DRMDetail)? $detail_drm->getCVOTaux() : $detail_drm->getProduitDetail()->getCVOTaux();
