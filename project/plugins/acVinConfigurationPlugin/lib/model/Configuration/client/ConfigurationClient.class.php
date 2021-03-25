@@ -245,7 +245,7 @@ class ConfigurationClient extends acCouchdbClient {
 			$destinationChoicesWidget = new sfWidgetFormI18nChoiceCountry(array('culture' => 'fr', 'add_empty' => true));
 			$this->countries = $destinationChoicesWidget->getChoices();
 			$this->countries['inconnu'] = 'Inconnu';
-			if (sfContext::getInstance()->getUser()->isTeledeclarationMode()) {
+            if (!sfContext::getInstance()->getUser()->hasTeledeclarationDrm()) {
                 $this->countries['UE'] = 'Union Européenne';
 				$this->countries['paystiers'] = 'Pays tiers';
 			}
