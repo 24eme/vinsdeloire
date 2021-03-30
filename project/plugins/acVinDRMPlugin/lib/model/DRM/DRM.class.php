@@ -1751,7 +1751,7 @@ class DRM extends BaseDRM implements InterfaceMouvementDocument, InterfaceVersio
 
     public function isMoisOuvert() {
       $mois = ($this->getEtablissementObject())? $this->getEtablissementObject()->getMoisToSetStock() : DRMPaiement::NUM_MOIS_DEBUT_CAMPAGNE;
-      return DRMClient::getInstance()->getMois($this->periode) == $mois;
+      return intval(DRMClient::getInstance()->getMois($this->periode)) == intval($mois);
     }
 
     public function hasFactureEmail() {
