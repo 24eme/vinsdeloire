@@ -160,7 +160,14 @@ class drmActions extends drmGeneriqueActions {
         set_time_limit(-1);
         $isTeledeclarationMode = $this->isTeledeclarationDrm();
         $identifiant = $request->getParameter('identifiant');
+        $etablissement = EtablissementClient::getInstance()->findByIdentifiant($identifiant);
         $periode = $request->getParameter('periode');
+
+        $calendrier = new DRMCalendrier($etablissement, DRMClient::getInstance()->buildCampagne($periode), 1);
+        if ($calendrier->getStatutsForIdentifiantPeriode($identifiant, $periode) == DRMCalendrier::STATUT_NOUVELLE_BLOQUEE) {
+            throw new sfException("La DRM ne peut être ouverte : une autre est en cours d'édition");
+        }
+
         $drm = DRMClient::getInstance()->createDoc($identifiant, $periode, $isTeledeclarationMode);
         $drm->save();
         if ($isTeledeclarationMode) {

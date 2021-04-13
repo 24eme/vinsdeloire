@@ -455,7 +455,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
             }
             //avec le reorder, les référence vers les details sautent, on les re-récupère donc ici :
             foreach($this->cache2datas as $cacheid => $params) {
-                $this->cache[$cacheid] = $this->drm->get($params['hash_detail']);
+                $this->cache[$cacheid] = $this->drm->getOrAdd($params['hash_detail']);
             }
             // On tente une dernière mise en cohérence en comparant les denomination complémentaires
             // et les tav de la drm preecente
@@ -1340,7 +1340,16 @@ class DRMImportCsvEdi extends DRMCsvEdi {
             $annees = explode('-', $campagne);
             $campagne = sprintf('%s-%s', $annees[0] + 1, $annees[1] + 1);
           }
-          return VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
+          $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
+          if ($vrac) {
+              $vracObj = VracClient::getInstance()->find($vrac);
+          }
+          if((!$vrac || !$vracObj || $vracObj->getVendeurIdentifiant() != $csvRow[self::CSV_IDENTIFIANT])){
+              $annees = explode('-', $campagne);
+              $campagne = sprintf('%s-%s', $annees[0] - 1, $annees[1] - 1);
+              $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
+          }
+          return $vrac;
         }
 
         /**

@@ -10,7 +10,7 @@
             <div class="panel">
                 <ul style="<?php if (!isset($btnAccess)): ?>height: auto<?php endif; ?>" class="etablissements_drms">
                     <?php
-                    //$haslegalpopup = false; 
+                    //$haslegalpopup = false;
                     foreach ($lastDrmToCompleteAndToStart as $etb => $drmsByEtb) :
                         ?>
                         <li>
@@ -18,12 +18,12 @@
                                 <h2> <?php echo $drmsByEtb->nom . ' (' . $etb . ')'; ?></h2>
                                 <ul class="block_drm_espace">
                                     <?php if ($drmsByEtb->statut == DRMCalendrier::STATUT_EN_COURS): ?>
-                                        <li class="statut_toFinish">                                            
-                                            <a href="<?php echo url_for('drm_redirect_etape', $drmsByEtb->drm); ?>" ><span>Finir la DRM <?php echo getFrPeriodeElision($drmsByEtb->periode); ?></span></a>
+                                        <li class="statut_toFinish">
+                                            <a href="<?php echo url_for('drm_redirect_etape', $drmsByEtb->drm); ?>" ><span>Finir la DRM <?php echo ($drmsByEtb->periode)? getFrPeriodeElision($drmsByEtb->periode) : ""; ?></span></a>
                                         </li>
                                     <?php endif; ?>
                                     <?php if ($drmsByEtb->statut == DRMCalendrier::STATUT_EN_COURS_NON_TELEDECLARE): ?>
-                                        <li class="statut_toFinish_non_teledeclare">                                            
+                                        <li class="statut_toFinish_non_teledeclare">
                                             <span>La DRM <?php echo getFrPeriodeElision($drmsByEtb->periode); ?> est en cours de saisie à Interloire</span>
                                         </li>
                                     <?php endif; ?>
@@ -51,8 +51,11 @@
                                     <?php if ($drmsByEtb->statut == DRMCalendrier::STATUT_VALIDEE): ?>
                                         <?php if ($etablissement->hasLegalSignature()) { ?>
                                             <li class="statut_validee">
-                                                <a href="<?php echo url_for('drm_visualisation', $drmsByEtb->drm); ?>"> <span>Visualiser votre DRM <?php echo getFrPeriodeElision($drmsByEtb->periode); ?>
-                                                    </span></a>
+                                            <?php if ($drmsByEtb->drm && $drmsByEtb->periode): ?>
+                                                <a href="<?php echo url_for('drm_visualisation', $drmsByEtb->drm); ?>">
+                                                    <span>Visualiser votre DRM <?php echo getFrPeriodeElision($drmsByEtb->periode); ?></span>
+                                                </a>
+                                            <?php endif; ?>
                                             </li>
                                             <?php
                                         } else {

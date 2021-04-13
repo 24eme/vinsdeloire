@@ -55,13 +55,13 @@ class acValidatorCouchdbDocument extends sfValidatorBase
             }
 
             foreach ($values as $value) {
-                if($document->get($hash) != $value) {
-                    return false;
+                if($document->get($hash) == $value) {
+                    return true;
                 }
             }
-            
+
         }
 
-        return true;
+        return false;
     }
 }
