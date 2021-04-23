@@ -1705,7 +1705,7 @@ class DRM extends BaseDRM implements InterfaceMouvementDocument, InterfaceVersio
 
     public function getTransmissionErreur() {
       if ($this->exist('transmission_douane')) {
-        return preg_replace('/<[^>]*>/', '', $this->transmission_douane->xml);
+        return preg_replace('/<[^>]*>/', '', str_replace('<message-erreur>', '\n', $this->transmission_douane->xml));
       }
       return "";
     }
