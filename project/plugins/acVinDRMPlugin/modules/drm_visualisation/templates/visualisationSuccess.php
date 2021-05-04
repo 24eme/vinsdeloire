@@ -30,7 +30,7 @@
                     <li style="height: auto">
                       <div class="adhesion_prelevement">
                         <img src="/images/visuels/prodouane.png" />
-                        <p><br />Vous pouvez à présent télécharger votre DRM au format XML afin de l'importer en DTI+ sur le site prodouanes via le lien suivant : <a href="https://pro.douane.gouv.fr/">pro.douane.gouv.fr</a><br />
+                        <p><br />Vous pouvez à présent télécharger votre DRM au format XML afin de l'importer en DTI+ sur le site de la douane via le lien suivant : <a href="https://douane.gouv.fr/">douane.gouv.fr</a><br />
                         <br />
                         <a class="btn_majeur" style="float:right;" download="<?= $drm->_id ?>.xml" target="_blank" href="<?php echo url_for('drm_xml', $drm); ?>">Télécharger le XML</a><br />&nbsp;</p>
                       </div>
