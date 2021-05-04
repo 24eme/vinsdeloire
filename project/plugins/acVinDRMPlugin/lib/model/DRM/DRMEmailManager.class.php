@@ -90,7 +90,7 @@ La DRM " . getFrPeriodeElision($this->drm->periode) . " de " . $etablissement->n
 La version PDF de cette DRM est également disponible en pièce jointe dans ce mail.
 
 Si vous n'avez pas signé la convention avec la douane qui active vos droits à la télédéclaration, la DRM doit être signée manuellement avant transmission par mail ou courrier postal à votre service local douanier.
-Sinon, vous pouvez transmettre cette DRM directement sur le portail de la douane, qui apparaîtra en mode brouillon sur le portail pro.douane.gouv.fr. Il vous restera alors à la valider une dernière fois en ligne sur le portail douanier.
+Sinon, vous pouvez transmettre cette DRM directement sur le portail de la douane, qui apparaîtra en mode brouillon sur le portail douane.gouv.fr. Il vous restera alors à la valider une dernière fois en ligne sur le portail douanier.
 
 Pour toutes questions, veuillez contacter:
   le service Economie et Etudes d'InterLoire: " . $contact->nom . " - " . $contact->email . " - " . $contact->telephone . "

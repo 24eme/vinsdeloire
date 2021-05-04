@@ -7,7 +7,7 @@
             </p>
         <?php if($compte->hasDroit(Roles::TELEDECLARATION_DOUANE) && ! $drm->crds->exist('COLLECTIFACQUITTE')): ?>
     	    <p>Une fois validés, ces éléments peuvent être transmis automatiquement sur l'application CIEL des douanes.</p><br/>
-          <p>N'oubliez pas alors de vous connecter au portail pro.douane.gouv.fr pour finaliser votre DRM et sa partie fiscale.</p><br/>
+          <p>N'oubliez pas alors de vous connecter au portail douane.gouv.fr pour finaliser votre DRM et sa partie fiscale.</p><br/>
         <?php endif; ?>
 	    <p>Si vous décidez de transmettre le document par courrier postal ou par mail, décochez l'accord de transmission ci-dessous et n'oubliez pas que la DRM doit être signée manuellement pour être valable.</p>
         <?php if($compte->hasDroit("teledeclaration_douane")): ?>
