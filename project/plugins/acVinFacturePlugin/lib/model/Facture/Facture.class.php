@@ -187,9 +187,9 @@ class Facture extends BaseFacture implements InterfaceArchivageDocument {
                 }
             }
         }
-        if (round($ligne->volume, 2) != round($volume, 2)) {
+        if (abs($ligne->volume - $volume) > 0.01) {
 
-            throw new sfException(sprintf("Le volume de la ligne %s de %s hl ne correspond pas à la somme des volumes des mouvements %s hl", $ligne->getKey(), round($ligne->volume, 2), round($volume, 2)));
+            throw new sfException(sprintf("%s : Le volume de la ligne %s de %s hl ne correspond pas à la somme des volumes des mouvements %s hl", $this->_id, $ligne->getKey(), round($ligne->volume, 2), round($volume, 2)));
         }
     }
 
