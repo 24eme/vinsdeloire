@@ -1335,21 +1335,21 @@ class DRMImportCsvEdi extends DRMCsvEdi {
               return $vrac->_id;
           }
 
-          $campagne = $this->drm->campagne;
+          $annee = explode('-', $campagne)[0];
           if (strpos($this->drm->periode, '07') === 4) { // Si en juillet
-            $annees = explode('-', $campagne);
-            $campagne = sprintf('%s-%s', $annees[0] + 1, $annees[1] + 1);
+              $annee =+ 1;
           }
-          $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
-          if ($vrac) {
-              $vracObj = VracClient::getInstance()->find($vrac);
+          for( $a = $annee ; $a > $annee - 5 ; $a++ ) {
+              $campagne = sprintf('%s-%s', $a, $a + 1);
+              $vracid = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
+              if (!$vracid) {
+                  continue;
+              }
+              $vracObj = VracClient::getInstance()->find($vracid);
+              if($vracObj && $vracObj->getVendeurIdentifiant() == $csvRow[self::CSV_IDENTIFIANT])){
+                  return $vracid;
+              }
           }
-          if((!$vrac || !$vracObj || $vracObj->getVendeurIdentifiant() != $csvRow[self::CSV_IDENTIFIANT])){
-              $annees = explode('-', $campagne);
-              $campagne = sprintf('%s-%s', $annees[0] - 1, $annees[1] - 1);
-              $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
-          }
-          return $vrac;
         }
 
         /**
