@@ -1346,7 +1346,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                   continue;
               }
               $vracObj = VracClient::getInstance()->find($vracid);
-              if($vracObj && $vracObj->getVendeurIdentifiant() == $csvRow[self::CSV_IDENTIFIANT])){
+              if ($vracObj && $vracObj->getVendeurIdentifiant() == $csvRow[self::CSV_IDENTIFIANT]) {
                   return $vracid;
               }
           }
