@@ -1335,7 +1335,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
               return $vrac->_id;
           }
 
-          $annee = explode('-', $campagne)[0];
+          $annee = explode('-', $this->drm->campagne)[0];
           if (strpos($this->drm->periode, '07') === 4) { // Si en juillet
               $annee =+ 1;
           }
