@@ -1334,12 +1334,11 @@ class DRMImportCsvEdi extends DRMCsvEdi {
           if($vrac = VracClient::getInstance()->findByNumContrat("VRAC-".KeyInflector::slugify($csvRow[self::CSV_CAVE_CONTRATID]), acCouchdbClient::HYDRATE_JSON)) {
               return $vrac->_id;
           }
-
           $annee = explode('-', $this->drm->campagne)[0];
           if (strpos($this->drm->periode, '07') === 4) { // Si en juillet
               $annee =+ 1;
           }
-          for( $a = $annee ; $a > $annee - 5 ; $a++ ) {
+          for( $a = $annee ; $a > $annee - 5 ; $a-- ) {
               $campagne = sprintf('%s-%s', $a, $a + 1);
               $vracid = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
               if (!$vracid) {
