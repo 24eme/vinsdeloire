@@ -79,7 +79,7 @@ EOF;
         if (!preg_match('/^[0-9]{6}$/', $arguments['periode'])) {
             throw new sfException('invalid periode : '.$arguments['periode']);
         }
-        $drm = DRMClient::getInstance()->createDocByPeriode($identifiant, $arguments['periode']);
+        $drm = DRMClient::getInstance()->createDocByPeriode($identifiant, $arguments['periode'], true);
 
        try {
         $drmCsvEdi = new DRMImportCsvEdiStandalone($arguments['file'], $drm, true);
