@@ -1399,7 +1399,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 $libellesSlugified[] = strtoupper(KeyInflector::slugify($libelle));
             }
             $genreKey = $produit->getGenre()->getKey();
-            $genreLibelle = self::$genres[$genreKey];
+            $genreLibelle = $produit->getGenre()->getLibelle();
             $libellesSlugified[1] = strtoupper(KeyInflector::slugify($genreLibelle));
             if($withAOP){
                 if(($libellesSlugified[0] == "AOC")){
