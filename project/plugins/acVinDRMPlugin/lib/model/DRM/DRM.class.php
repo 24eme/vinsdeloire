@@ -245,7 +245,6 @@ class DRM extends BaseDRM implements InterfaceMouvementDocument, InterfaceVersio
 
     public function generateByDRM(DRM $drm, $teledeclarationMode = false) {
 
-        $reprise_donnees = (!$this->isMoisOuvert() && $drm->periode == DRMClient::getPeriodePrecedente($this->periode));
         foreach (array(DRM::DETAILS_KEY_SUSPENDU, DRM::DETAILS_KEY_ACQUITTE) as $type_drm) {
           foreach ($drm->getProduitsDetails($teledeclarationMode, $type_drm) as $produit) {
               $produitCepage = $produit->getCepage();
@@ -260,11 +259,6 @@ class DRM extends BaseDRM implements InterfaceMouvementDocument, InterfaceVersio
               }
 
               $detail = $this->addProduit($produitConfig->getHash(), $type_drm, $produit->get('denomination_complementaire'));
-              if ($reprise_donnees) {
-                  $detail->stocks_debut->revendique = $produit->total;
-                  $detail->produit_libelle = $produit->produit_libelle;
-                  $detail->code_inao = $produit->code_inao;
-              }
           }
         }
 
@@ -272,17 +266,10 @@ class DRM extends BaseDRM implements InterfaceMouvementDocument, InterfaceVersio
         foreach($drm->getAllCrds() as $regime => $crds) {
             foreach($crds as $crd) {
                 $stock_debut = null;
-                if($reprise_donnees){
-                  $stock_debut = $crd->stock_fin;
-                }
                 $this->getOrAdd('crds')->getOrAdd($regime)->getOrAddCrdNode($crd->genre, $crd->couleur, $crd->centilitrage, $crd->detail_libelle, $stock_debut);
             }
         }
 
-        if ($reprise_donnees) {
-            $this->precedente = $drm->_id;
-            $this->document_precedent = null;
-        }
     }
 
     public function generateSuivanteByPeriode($periode, $isTeledeclarationMode = false) {
@@ -1705,7 +1692,7 @@ class DRM extends BaseDRM implements InterfaceMouvementDocument, InterfaceVersio
 
     public function getTransmissionErreur() {
       if ($this->exist('transmission_douane')) {
-        return preg_replace('/<[^>]*>/', '', $this->transmission_douane->xml);
+        return preg_replace('/<[^>]*>/', '', str_replace('<message-erreur>', '\n', $this->transmission_douane->xml));
       }
       return "";
     }

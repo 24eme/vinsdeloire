@@ -1334,22 +1334,21 @@ class DRMImportCsvEdi extends DRMCsvEdi {
           if($vrac = VracClient::getInstance()->findByNumContrat("VRAC-".KeyInflector::slugify($csvRow[self::CSV_CAVE_CONTRATID]), acCouchdbClient::HYDRATE_JSON)) {
               return $vrac->_id;
           }
-
-          $campagne = $this->drm->campagne;
+          $annee = explode('-', $this->drm->campagne)[0];
           if (strpos($this->drm->periode, '07') === 4) { // Si en juillet
-            $annees = explode('-', $campagne);
-            $campagne = sprintf('%s-%s', $annees[0] + 1, $annees[1] + 1);
+              $annee =+ 1;
           }
-          $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
-          if ($vrac) {
-              $vracObj = VracClient::getInstance()->find($vrac);
+          for( $a = $annee ; $a > $annee - 5 ; $a-- ) {
+              $campagne = sprintf('%s-%s', $a, $a + 1);
+              $vracid = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
+              if (!$vracid) {
+                  continue;
+              }
+              $vracObj = VracClient::getInstance()->find($vracid);
+              if ($vracObj && $vracObj->getVendeurIdentifiant() == $csvRow[self::CSV_IDENTIFIANT]) {
+                  return $vracid;
+              }
           }
-          if((!$vrac || !$vracObj || $vracObj->getVendeurIdentifiant() != $csvRow[self::CSV_IDENTIFIANT])){
-              $annees = explode('-', $campagne);
-              $campagne = sprintf('%s-%s', $annees[0] - 1, $annees[1] - 1);
-              $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
-          }
-          return $vrac;
         }
 
         /**
@@ -1399,7 +1398,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 $libellesSlugified[] = strtoupper(KeyInflector::slugify($libelle));
             }
             $genreKey = $produit->getGenre()->getKey();
-            $genreLibelle = self::$genres[$genreKey];
+            $genreLibelle = $produit->getGenre()->getLibelle();
             $libellesSlugified[1] = strtoupper(KeyInflector::slugify($genreLibelle));
             if($withAOP){
                 if(($libellesSlugified[0] == "AOC")){

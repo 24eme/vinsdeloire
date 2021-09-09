@@ -197,6 +197,7 @@ class DRMCielCompare
 	    public function getFormattedXMLComparaison() {
 	      $str_arr = array();
 	      foreach ($this->getDiff() as $key => $values) {
+			  $key = str_replace("\xc2\xa0", '␣', $key);
 	        $keyArr = explode("/",$key);
 	        if(strpos($key,"{array}/produit/{array}")){
 	          $probleme = "[Problème de ".str_replace("-"," ",$keyArr[7])." en ".str_replace("-"," ",$keyArr[1])."]";

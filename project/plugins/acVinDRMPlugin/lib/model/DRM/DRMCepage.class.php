@@ -95,7 +95,7 @@ class DRMCepage extends BaseDRMCepage {
     }
 
     public function hasRerserveIntepro() {
-        return $this->exist('reserve_interpro');
+        return ($this->getDocument()->periode < '202107') && $this->exist('reserve_interpro');
     }
 
     public function getRerserveIntepro() {

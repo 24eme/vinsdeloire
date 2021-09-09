@@ -426,6 +426,11 @@ class DRMClient extends acCouchdbClient {
         $campagne = $campagne_or_periode;
 
         if (preg_match('/^[0-9]{6}$/', $campagne_or_periode)) {
+            $e = EtablissementClient::getInstance()->find($identifiant);
+            $mois = substr($campagne_or_periode, 4, 2);
+            if ($mois == DRMPaiement::NUM_MOIS_DEBUT_CAMPAGNE && $e->getMoisToSetStock() != $mois) {
+                $campagne_or_periode = $campagne_or_periode - 1;
+            }
             $campagne = $this->buildCampagne($campagne_or_periode);
         }
 
