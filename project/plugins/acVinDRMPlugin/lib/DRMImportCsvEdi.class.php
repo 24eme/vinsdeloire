@@ -848,7 +848,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 $couleur = $this->convertCouleur($csvRow[self::CSV_CRD_COULEUR]);
                 $litrageLibelle = self::row2litrage($csvRow[self::CSV_CRD_CENTILITRAGE]);
                 $categorie_key = $csvRow[self::CSV_CRD_CATEGORIE_KEY];
-                $type_key = $csvRow[self::CSV_CRD_TYPE_KEY];
+                $type_key = strtolower($csvRow[self::CSV_CRD_TYPE_KEY]);
                 $quantite = KeyInflector::slugify($csvRow[self::CSV_CRD_QUANTITE]);
                 if($categorie_key == "stocks_debut"){ $categorie_key = 'stock_debut'; }
                 if($categorie_key == "stocks_fin"){ $categorie_key = 'stock_fin'; }
