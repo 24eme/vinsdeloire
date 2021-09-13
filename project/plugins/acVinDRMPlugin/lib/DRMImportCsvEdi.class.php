@@ -945,13 +945,13 @@ class DRMImportCsvEdi extends DRMCsvEdi {
           if (preg_match('/^M/', $g)) {
             return DRMClient::DRM_CRD_CATEGORIE_MOUSSEUX;
           }
-          if (preg_match('/^COGNAC/', $s)) {
+          if (preg_match('/^COGNAC/', $g)) {
               return DRMClient::DRM_CRD_CATEGORIE_COGNAC;
           }
-          if (preg_match('/^ALCOOL/', $s)) {
+          if (preg_match('/^ALCOOL/', $g)) {
               return self::DRM_CRD_CATEGORIE_ALCOOLS;
           }
-          if (preg_match('/^PI/', $s) || preg_match('/^PRODUIT/', $s)) {
+          if (preg_match('/^PI/', $g) || preg_match('/^PRODUIT/', $g)) {
               return self::DRM_CRD_CATEGORIE_PI;
           }
 
