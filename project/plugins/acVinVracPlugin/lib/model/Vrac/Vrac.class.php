@@ -107,6 +107,7 @@ class Vrac extends BaseVrac {
         if (($this->type_transaction == VracClient::TYPE_TRANSACTION_RAISINS ||
             $this->type_transaction == VracClient::TYPE_TRANSACTION_MOUTS)
             && $array_date[1] >= '06'
+            && $array_date[1] < '08'
         ) {
             $this->setDateCampagne($array_date[0].'-08-01');
         }
