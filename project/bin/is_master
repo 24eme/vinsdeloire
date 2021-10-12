@@ -4,7 +4,7 @@ cd $(dirname $0)/.. > /dev/null 2>&1
 
 . bin/config.inc
 
-if test $(hostname) = "$(torsocks curl -s $PROJETURL"/master.php")" ; then
+if test $(hostname) = "$(curl --doh-url https://8.8.8.8/dns-query -s $PROJETURL"/master.php")" ; then
 	exit 0;
 else
 	exit 1;
