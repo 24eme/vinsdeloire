@@ -45,6 +45,7 @@ do
     sed -i 's/;suspendu;entrees;recolte;/;suspendu;entrees;revendique;/' $EXPORTDIR/$csvfilevinsi
     sed -i 's/;Autres pays;/;Inconnu;/' $EXPORTDIR/$csvfilevinsi
     sed -i 's/;Côtes de Duras Blanc \(moelleux\|sec\) ();/;Côtes de Duras Blanc (1B117D);/' $EXPORTDIR/$csvfilevinsi
+    sed -i 's/Bélarus/Biélorussie/gi' $EXPORTDIR/$csvfilevinsi
 
     periode=$(echo -n $csvfile | cut -d "_" -f 2)
     noaccises=$(cat $EXPORTDIR/$csvfilevinsi | head -n 1 | cut -d ";" -f 4)
