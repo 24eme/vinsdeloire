@@ -290,7 +290,8 @@ class Societe extends BaseSociete {
 
         $this->siege->adresse = $compte->adresse;
         if ($compte->exist("adresse_complementaire")) {
-            $this->siege->add("adresse_complementaire", $compte->adresse_complementaire);
+            $this->siege->add("adresse_complementaire");
+            $this->siege->adresse_complementaire = $compte->adresse_complementaire;
         }
         $this->siege->code_postal = $compte->code_postal;
         $this->siege->commune = $compte->commune;
