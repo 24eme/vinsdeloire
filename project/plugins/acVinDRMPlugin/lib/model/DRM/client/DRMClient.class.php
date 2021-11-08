@@ -51,6 +51,7 @@ class DRMClient extends acCouchdbClient {
         self::DRM_BLEU => 'Bleu',
         self::DRM_LIEDEVIN => 'Lie de vin'
     );
+    public static $drm_crds_genre = array(DRMClient::DRM_CRD_CATEGORIE_TRANQ => 'Vins tranquilles', DRMClient::DRM_CRD_CATEGORIE_MOUSSEUX => 'Vins mousseux', DRMClient::DRM_CRD_CATEGORIE_PI => 'Produits intermédiaires', DRMClient::DRM_CRD_CATEGORIE_ALCOOLS => 'Alcools', DRMClient::DRM_CRD_CATEGORIE_COGNAC => 'Cognacs/Armagnac', );
     public static $drm_max_favoris_by_types_mvt = array(self::DRM_TYPE_MVT_ENTREES => 3, self::DRM_TYPE_MVT_SORTIES => 6);
     public static $drm_documents_daccompagnement = array(
         self::DRM_DOCUMENTACCOMPAGNEMENT_DAADAC => 'DAA/DCA',
