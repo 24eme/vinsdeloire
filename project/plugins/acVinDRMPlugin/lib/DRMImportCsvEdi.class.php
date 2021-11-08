@@ -949,10 +949,10 @@ class DRMImportCsvEdi extends DRMCsvEdi {
               return DRMClient::DRM_CRD_CATEGORIE_COGNAC;
           }
           if (preg_match('/^ALCOOL/', $g)) {
-              return self::DRM_CRD_CATEGORIE_ALCOOLS;
+              return DRMClient::DRM_CRD_CATEGORIE_ALCOOLS;
           }
           if (preg_match('/^PI/', $g) || preg_match('/^PRODUIT/', $g)) {
-              return self::DRM_CRD_CATEGORIE_PI;
+              return DRMClient::DRM_CRD_CATEGORIE_PI;
           }
 
           return null;
