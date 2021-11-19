@@ -848,7 +848,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 $couleur = $this->convertCouleur($csvRow[self::CSV_CRD_COULEUR]);
                 $litrageLibelle = self::row2litrage($csvRow[self::CSV_CRD_CENTILITRAGE]);
                 $categorie_key = $csvRow[self::CSV_CRD_CATEGORIE_KEY];
-                $type_key = $csvRow[self::CSV_CRD_TYPE_KEY];
+                $type_key = strtolower($csvRow[self::CSV_CRD_TYPE_KEY]);
                 $quantite = KeyInflector::slugify($csvRow[self::CSV_CRD_QUANTITE]);
                 if($categorie_key == "stocks_debut"){ $categorie_key = 'stock_debut'; }
                 if($categorie_key == "stocks_fin"){ $categorie_key = 'stock_fin'; }
@@ -945,14 +945,14 @@ class DRMImportCsvEdi extends DRMCsvEdi {
           if (preg_match('/^M/', $g)) {
             return DRMClient::DRM_CRD_CATEGORIE_MOUSSEUX;
           }
-          if (preg_match('/^COGNAC/', $s)) {
+          if (preg_match('/^COGNAC/', $g)) {
               return DRMClient::DRM_CRD_CATEGORIE_COGNAC;
           }
-          if (preg_match('/^ALCOOL/', $s)) {
-              return self::DRM_CRD_CATEGORIE_ALCOOLS;
+          if (preg_match('/^ALCOOL/', $g)) {
+              return DRMClient::DRM_CRD_CATEGORIE_ALCOOLS;
           }
-          if (preg_match('/^PI/', $s) || preg_match('/^PRODUIT/', $s)) {
-              return self::DRM_CRD_CATEGORIE_PI;
+          if (preg_match('/^PI/', $g) || preg_match('/^PRODUIT/', $g)) {
+              return DRMClient::DRM_CRD_CATEGORIE_PI;
           }
 
           return null;
@@ -1334,22 +1334,21 @@ class DRMImportCsvEdi extends DRMCsvEdi {
           if($vrac = VracClient::getInstance()->findByNumContrat("VRAC-".KeyInflector::slugify($csvRow[self::CSV_CAVE_CONTRATID]), acCouchdbClient::HYDRATE_JSON)) {
               return $vrac->_id;
           }
-
-          $campagne = $this->drm->campagne;
+          $annee = explode('-', $this->drm->campagne)[0];
           if (strpos($this->drm->periode, '07') === 4) { // Si en juillet
-            $annees = explode('-', $campagne);
-            $campagne = sprintf('%s-%s', $annees[0] + 1, $annees[1] + 1);
+              $annee =+ 1;
           }
-          $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
-          if ($vrac) {
-              $vracObj = VracClient::getInstance()->find($vrac);
+          for( $a = $annee ; $a > $annee - 5 ; $a-- ) {
+              $campagne = sprintf('%s-%s', $a, $a + 1);
+              $vracid = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
+              if (!$vracid) {
+                  continue;
+              }
+              $vracObj = VracClient::getInstance()->find($vracid);
+              if ($vracObj && $vracObj->getVendeurIdentifiant() == $csvRow[self::CSV_IDENTIFIANT]) {
+                  return $vracid;
+              }
           }
-          if((!$vrac || !$vracObj || $vracObj->getVendeurIdentifiant() != $csvRow[self::CSV_IDENTIFIANT])){
-              $annees = explode('-', $campagne);
-              $campagne = sprintf('%s-%s', $annees[0] - 1, $annees[1] - 1);
-              $vrac = VracClient::getInstance()->findDocIdByNumArchive($campagne, $csvRow[self::CSV_CAVE_CONTRATID], 2);
-          }
-          return $vrac;
         }
 
         /**
@@ -1399,7 +1398,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 $libellesSlugified[] = strtoupper(KeyInflector::slugify($libelle));
             }
             $genreKey = $produit->getGenre()->getKey();
-            $genreLibelle = self::$genres[$genreKey];
+            $genreLibelle = $produit->getGenre()->getLibelle();
             $libellesSlugified[1] = strtoupper(KeyInflector::slugify($genreLibelle));
             if($withAOP){
                 if(($libellesSlugified[0] == "AOC")){

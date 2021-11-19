@@ -11,8 +11,8 @@
 <?php if ($drm->exist('transmission_douane') && ($drm->transmission_douane->xml != null)):
     if ($drm->transmission_douane->success) : ?>
 La transmission a été réalisée avec succès le <?php echo $drm->getTransmissionDate(); ?> : accusé reception numéro <?php echo $drm->transmission_douane->id_declaration ?>.
-<?php elseif ($drm->transmission_douane->xml): ?>
-La transmission a échoué. Le message d'erreur envoyé par le portail des douanes est « <?php echo $drm->getTransmissionErreur(); ?> ».
+<?php elseif ($drm->transmission_douane->xml): ?><p style="text-align:left;">
+La transmission a échoué. Le message d'erreur envoyé par le portail des douanes est : <?php echo str_replace('\n', '<br/> - ', $drm->getTransmissionErreur()); ?></p>
 <?php endif ; elseif ($drm->exist("_attachments") && $drm->_attachments->exist("drm_transmise.xml")): ?>
 Cette DRM semble avoir ét étransmise et réouverte.
 <?php else: ?>

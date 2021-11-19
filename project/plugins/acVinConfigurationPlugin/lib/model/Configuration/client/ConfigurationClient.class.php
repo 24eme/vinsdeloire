@@ -244,11 +244,13 @@ class ConfigurationClient extends acCouchdbClient {
 		if(is_null($this->countries)) {
 			$destinationChoicesWidget = new sfWidgetFormI18nChoiceCountry(array('culture' => 'fr', 'add_empty' => true));
 			$this->countries = $destinationChoicesWidget->getChoices();
-			$this->countries['inconnu'] = 'Inconnu';
-            if (!sfContext::getInstance()->getUser()->hasTeledeclarationDrm()) {
-                $this->countries['UE'] = 'Union Européenne';
-				$this->countries['paystiers'] = 'Pays tiers';
-			}
+			try {
+				if (!sfContext::getInstance()->getUser()->hasTeledeclarationDrm()) {
+					$this->countries['inconnu'] = 'Inconnu';
+					$this->countries['UE'] = 'Union Européenne';
+					$this->countries['paystiers'] = 'Pays tiers';
+				}
+			}catch(sfException $e) {}
 		}
 				if($detail_drm){
 						$drm = $detail_drm->getDocument();
