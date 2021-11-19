@@ -43,6 +43,7 @@ do
     sed -i 's/;suspendu;entrees;regularisation;/;suspendu;entrees;excedents;/' $EXPORTDIR/$csvfilevinsi
     sed -i 's/;suspendu;entrees;achatnoncrd;/;suspendu;entrees;revendique;/' $EXPORTDIR/$csvfilevinsi
     sed -i 's/;suspendu;entrees;recolte;/;suspendu;entrees;revendique;/' $EXPORTDIR/$csvfilevinsi
+    sed -i 's/;suspendu;entrees;retourembouteillage;/;suspendu;entrees;travailafacon;/' $EXPORTDIR/$csvfilevinsi
     sed -i 's/;Autres pays;/;Inconnu;/' $EXPORTDIR/$csvfilevinsi
     sed -i 's/;Côtes de Duras Blanc \(moelleux\|sec\) ();/;Côtes de Duras Blanc (1B117D);/' $EXPORTDIR/$csvfilevinsi
 
