@@ -177,7 +177,7 @@ class DRMCalendrier {
 
     private function loadStatuts() {
         $this->statuts = array();
-        $lastPeriode = Date::addDelaiToDate('-30 month', null, 'Ym');
+        $lastPeriode = Date::addDelaiToDate('-36 month', null, 'Ym');
         foreach ($this->etablissements as $etablissement) {
             $etbIdentifiant = $etablissement->identifiant;
             if (!array_key_exists($etbIdentifiant, $this->statuts)) {
