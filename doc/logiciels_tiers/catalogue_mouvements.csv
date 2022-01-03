@@ -23,6 +23,7 @@ suspendu,sorties,manquant,destruction / manquants,destruction / manquants suite 
 suspendu,sorties,distillation,distillation de vin,distillation de vin,OBSERVATIONS,sorties-periode/sorties-sans-paiement-droits/autres-sorties
 suspendu,sorties,declassement,déclassement,déclassements d'aop ou igp en vins sans ig,,sorties-periode/sorties-sans-paiement-droits/mouvements-internes/replis-declassement-transfert-changement-appellation
 suspendu,sorties,export,export,ventes de vrac ou conditionnés à l'export; précisez les pays destinataires,PAYS,sorties-periode/sorties-sans-paiement-droits/sorties-definitives
+suspendu,sorties,fabricationautre,fabrication autre prod.,fabrication autre produit,,sorties-periode/sorties-sans-paiement-droits/mouvements-internes/fabrication-autre-produit
 suspendu,sorties,usageindustriel,lies. vinaigrerie. …,lies. usage agroalimentaire. vinaigrerie,OBSERVATIONS,sorties-periode/sorties-sans-paiement-droits/autres-sorties
 suspendu,sorties,destructionperte,manipulations / pertes,réduction constatée des volumes suite à des manipulations œnologiques ou des soutirages. pertes,,sorties-periode/sorties-sans-paiement-droits/mouvements-internes/autres-mouvements-internes
 suspendu,sorties,repli,repli,repli d'une aop vers une autre ou changement de dénomination,,sorties-periode/sorties-sans-paiement-droits/mouvements-internes/replis-declassement-transfert-changement-appellation
