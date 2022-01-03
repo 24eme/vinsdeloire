@@ -131,7 +131,8 @@ AOP,VCI,Muscadet Sèvre et Maine,,,,,VCI Muscadet Sèvre et Maine,1B230 99
 AOP,VCI,Muscadet Sèvre et Maine,Sur lie,,,,VCI Muscadet Sèvre et Maine Sur lie,1B230 91
 AOP,VCI,Saumur Mousseux,,,Blanc,,VCI Saumur Mousseux Blanc,1B205M91
 AOP,VCI,Saumur Mousseux,,,Rosé,,VCI Saumur Mousseux Rosé,1S205M91
-AOP,VCI,Rosé d'Anjou,,,Rosé,,VCI Rosé d'Anjou Rosé,
+AOP,VCI,Rosé d'Anjou,,,Rosé,,VCI Rosé d'Anjou,1S200D99
+AOP,VCI,Coteaux du Layon,,,,,VCI Coteaux du Layon,1B212L99
 IGP,,Val de Loire,,,Blanc,Chardonnay,IGP Val de Loire Blanc Chardonnay,3B009 CA
 IGP,,Val de Loire,,,Blanc,Sauvignon blanc,IGP Val de Loire Blanc Sauvignon blanc,3B009 AE
 IGP,,Val de Loire,,,Blanc,,IGP Val de Loire Blanc,3B009
@@ -198,10 +199,10 @@ IGP,,Val de Loire,,Indre et Loire,Blanc,Sauvignon blanc,IGP Val de Loire Indre e
 IGP,,Val de Loire,,Indre et Loire,Blanc,Sauvignon gris,IGP Val de Loire Indre et Loire Blanc Sauvignon gris,3B371 AF
 IGP,,Val de Loire,,Indre et Loire,Blanc,,IGP Val de Loire Indre et Loire Blanc,3B371
 IGP,,Val de Loire,,Indre et Loire,Rosé,,IGP Val de Loire Indre et Loire Rosé,3S371
-IGP,,Val de Loire,,Indre,Rouge,,IGP Val de Loire Indre Rouge,3R371
+IGP,,Val de Loire,,Indre,Rouge,,IGP Val de Loire Indre Rouge,3R361
 IGP,,Val de Loire,,Indre,Blanc,,IGP Val de Loire Indre Blanc,3B361
 IGP,,Val de Loire,,Indre,Blanc,Chardonnay,IGP Val de Loire Indre Blanc Chardonnay,3B361 CA
-IGP,,Val de Loire,,Indre,Rosé,,IGP Val de Loire Indre Rosé,3S371
+IGP,,Val de Loire,,Indre,Rosé,,IGP Val de Loire Indre Rosé,3S361
 IGP,,Val de Loire,,Allier,Rouge,,IGP Val de Loire Allier Rouge,3R031
 IGP,,Val de Loire,,Allier,Blanc,,IGP Val de Loire Allier Blanc,3B031
 IGP,,Val de Loire,,Allier,Rosé,,IGP Val de Loire Allier Rosé,3S031
@@ -335,10 +336,16 @@ IGP,,Val de Loire,,Vienne,Rosé,Cabernet sauvignon,IGP Val de Loire Vienne Rosé
 IGP,,Val de Loire,,Vienne,Rosé,Merlot,IGP Val de Loire Vienne Rosé Merlot,3S861 DE
 IGP,,Val de Loire,,Vienne,Rosé,Gamay noir,IGP Val de Loire Vienne Rosé Gamay noir,3S861 CM
 Autres vins,tranquilles,Vins sans IG,,,Blanc,,Vins sans IG Blanc,4B999
+Autres vins,tranquilles,Vins sans IG,,,Blanc,Sauvignon blanc,Vins sans IG Blanc Sauvignon blanc,4B500 AE
+Autres vins,tranquilles,Vins sans IG,,,Blanc,Chardonnay,Vins sans IG Blanc Chardonnay,4B500 CA
+Autres vins,tranquilles,Vins sans IG,,,Blanc,Colombard,Vins sans IG Blanc Colombard,4B500 CJ
+Autres vins,tranquilles,Vins sans IG,,,Blanc,Sauvignon gris,Vins sans IG Blanc Sauvignon gris,4B500 AF
+Autres vins,tranquilles,Vins sans IG,,,Blanc,Melon,Vins sans IG Blanc Melon,4B500 DK
 Autres vins,tranquilles,Vins sans IG,,,Rosé,,Vins sans IG Rosé,4S999
 Autres vins,tranquilles,Vins sans IG,,,Rouge,,Vins sans IG Rouge,4R999
 Autres vins,tranquilles,Vins tranquilles étrangers,,,,,Vins tranquilles étrangers,VT_ETRANGERS
 Autres vins,tranquilles,,,,,,Autres vins tranquilles,VT_SANS_IG_AUTRES
+Autres vins,tranquilles,Vins tranquilles sans IG autres Premix,,,,,Vins tranquilles sans IG autres Premix,VT_SANS_IG_AUTRES_PREMIX
 Autres vins,Mousseux,Vins sans IG,,,Blanc,,Vins sans IG Mousseux Blanc,4B999M
 Autres vins,Mousseux,Vins sans IG,,,Rouge,,Vins sans IG Mousseux Rouge,4R999M
 Autres vins,Mousseux,Vins sans IG,,,Rosé,,Vins sans IG Mousseux Rosé,4S999M
@@ -365,6 +372,7 @@ AOP,,Faugères,,,Blanc,,Faugères Blanc,1B515
 AOP,,Faugères,,,Rosé,,Faugères Rosé,1S515
 AOP,,Minervois,,,Rouge,,Minervois Rouge,1R517
 AOP,,Minervois,,,Blanc,,Minervois Blanc,1B517
+AOP,,Minervois,,La Livinière,,,Minervois La Livinière,1R516
 AOP,,Madiran,,,,,Madiran,1R140S
 AOP,,Fitou,,,,,Fitou,1R482S
 AOP,,Saint-Chinian,,,Rouge,,Saint-Chinian Rouge,1R518
@@ -405,6 +413,7 @@ AOP,,Saint Pourçain,,,Rouge,,Saint Pourçain Rouge,1R430S
 AOP,,Saint Pourçain,,,Rosé,,Saint Pourçain Rosé,1S430S
 AOP,,Alsace grand cru,SGN,,Blanc,,Alsace grand cru Blanc SGN,1B037S 1
 AOP,,Alsace grand cru,SGN,,Blanc,Riesling,Alsace grand cru Blanc SGN Riesling,1B037D14
+AOP,,Alsace grand cru,,Klevener de Heiligenstein,Blanc,,Alsace grand cru Klevener de Heiligenstein Blanc,1B054S
 AOP,,Gaillac,,,Rouge,,Gaillac Rouge,1R128S
 AOP,,Gaillac,,,Rosé,,Gaillac Rosé,1S128S
 AOP,,Gaillac,,,Blanc,,Gaillac Blanc,1B128S
@@ -422,9 +431,11 @@ AOP,,Beaujolais,,,Rouge,,Beaujolais Rouge,1R300
 AOP,,Beaujolais,,,Blanc,,Beaujolais Blanc,1B300
 AOP,,Beaujolais,,Leynes,Rouge,,Beaujolais Leynes Rouge,1R301 35
 AOP,,Beaujolais,Primeur,,Rosé,,Beaujolais Rosé Primeur,1S300 01
+AOP,,Beaujolais,Primeur,,Rouge,,Beaujolais Rouge Primeur,1R300 01
 AOP,,Côtes de Bourg,,,Rouge,,Côtes de Bourg Rouge,1R108S
 AOP,,Bordeaux,,,Rouge,,Bordeaux Rouge,1R105S
-AOP,,Bordeaux,,,Blanc,Bordeaux,Bordeaux Blanc,1B105
+AOP,,Bordeaux,,,Blanc,Bordeaux,Bordeaux Blanc,1B105S
+AOP,,Bordeaux,,,Rosé,,Bordeaux Rosé,1S105S
 AOP,,Lussac Saint-Emilion,,,,,Lussac Saint-Emilion,1R139S
 AOP,,Graves,,,Rouge,,Graves Rouge,1R130S
 AOP,,Blaye,,,Rouge,,Blaye Rouge,1R104S
@@ -447,7 +458,9 @@ AOP,,Côtes Roannaises,,,Rouge,,Côtes Roannaises Rouge,1R359
 AOP,,Alsace,,,Blanc,Edelzwicker,Alsace Blanc Edelzwicker,1B001S
 AOP,,Alsace,,,Blanc,Gewurztraminer,Alsace Blanc Gewurztraminer,1B001S 1
 AOP,,Alsace,,,Blanc,Riesling,Alsace Blanc Riesling,1B001S 4
+AOP,,Alsace,,,Blanc,Pinot gris,Alsace Blanc Pinot gris,1B001S 3
 AOP,,Alsace,,,Rouge,Pinot Noir,Alsace Rouge Pinot Noir,1R001S
+AOP,,Alsace,VT,,Blanc,Gewurztraminer,Alsace Blanc VT Gewurztraminer,1B001D21
 AOP,,Cotes de Bergerac,,,Blanc,,Cotes de Bergerac Blanc,1B103D
 AOP,,Cotes de Bergerac,,,Rouge,,Cotes de Bergerac Rouge,1R103S 1
 AOP,,Loupiac,,,,,Loupiac,1B138L
@@ -500,6 +513,7 @@ AOP,,Cotes du Roussillon Villages,,,Rouge,,Cotes du Roussillon Villages Rouge,1R
 AOP,,Terrasses du Larzac,,,,,Terrasses du Larzac,1R488
 AOP,,Corbières,,,Rouge,,Corbières Rouge,1R493
 AOP,,Languedoc,,,Rouge,,Languedoc Rouge,1R495 
+AOP,,Languedoc,,,Rosé,,Languedoc Rosé,
 AOP,,Languedoc,,Pezenas,Rouge,,Languedoc Pezenas Rouge,1R510
 AOP,,Cornas,,,,,Cornas,1R526
 AOP,,Chateauneuf-du-Pape,,,Rouge,,Chateauneuf-du-Pape Rouge,1R532S
@@ -515,6 +529,18 @@ AOP,,Pomerol,,,,,Pomerol,1R151S
 AOP,,Côte-Rôtie,,,,,Côte-Rôtie,1R527
 AOP,,Coteaux du Languedoc,,,Rouge,,Coteaux du Languedoc Rouge,1R494
 AOP,,Coteaux varois,,,Rouge,,Coteaux varois Rouge,1R581S
+AOP,,Corse Calvi,,,Rosé,,Corse Calvi Rosé,1S586S
+AOP,,Monbazillac,,,,,Monbazillac,1B144L
+AOP,,Saint-Estèphe,,,,,Saint-Estèphe,1R158S
+AOP,,Beaujolais Village,,,Rouge,,Beaujolais Village Rouge,1R301
+AOP,,Costières de Nîmes,,,Rouge,,Costières de Nîmes Rouge,1R554
+AOP,,Costières de Nîmes,,,Rosé,,Costières de Nîmes Rosé,
+AOP,,Vin de Savoie Apremont,,,Blanc,,Vin de Savoie Apremont Blanc,1B443S
+AOP,,Cotes du Jura,,,Rouge,,Cotes du Jura Rouge,1R264
+AOP,,Cotes du Jura,Vin de paille,,,,Cotes du Jura Vin de paille,1B264L
+AOP,,Cotes du Jura,Vin jaune,,,,Cotes du Jura Vin jaune,1B264 01
+AOP,,Crémant du Jura,,,Blanc,,Crémant du Jura Blanc,1B267M
+AOP,,Rully,,,Blanc,,Rully Blanc,1B418
 AOP,Mousseux,Montlouis sur Loire,,,Blanc,Chenin,Montlouis sur Loire Mousseux,1B225M 1
 AOP,Mousseux,Montlouis sur Loire,Pétillant,,Blanc,Chenin,Montlouis sur Loire Pétillant,1B225P 1
 AOP,Mousseux,Montlouis sur Loire,Fermentation unique,,Blanc,,Montlouis sur Loire Mousseux Fermentation unique,1B225MFU
@@ -539,6 +565,7 @@ IGP,,Oc,,,Blanc,,IGP Oc Blanc,3B001
 IGP,,Oc,,,Blanc,Multi cépage,IGP Oc Blanc Multi cépage,3B001 00
 IGP,,Oc,,,Blanc,Sauvignon blanc,IGP Oc Blanc Sauvignon blanc,3B001 AE
 IGP,,Oc,,,Blanc,Chardonnay,IGP Oc Blanc Chardonnay,3B001 CA
+IGP,,Oc,,,Blanc,Chenin,IGP Oc Blanc Chenin,3B001 CF
 IGP,,Oc,,,Rosé,,IGP Oc Rosé,3S001
 IGP,,Oc,,,Rosé,Multi cépage,IGP Oc Rosé Multi cépage,3S001 00
 IGP,,Oc,,,Rosé,Cabernet sauvignon,IGP Oc Rosé Cabernet sauvignon,3S001 BX
@@ -570,17 +597,22 @@ IGP,,Pays d'Hérault,,,Rouge,,IGP Pays d'Hérault Rouge,3R341
 IGP,,Côtes de Thau,,,Rouge,,IGP Côtes de Thau Rouge,3R953 
 IGP,,Côtes de Thau,,,Blanc,,IGP Côtes de Thau Blanc,3B953 
 IGP,,Côtes de Thau,,,Rosé,,IGP Côtes de Thau Rosé,3S953
+IGP,,Côtes de Thau,,Cap d'Agde,Rosé,,IGP Côtes de Thau Cap d'Agde Rosé,3S019
 IGP,,Méditerranée,,,Rouge,,IGP Méditerranée Rouge,3R007
 IGP,,Méditerranée,,,Rosé,,IGP Méditerranée Rosé,3S007
 IGP,,Comté Tolosan,,,Blanc,Sauvignon blanc,IGP Comté Tolosan Blanc Sauvignon blanc,3B003 AE
 IGP,,Comté Tolosan,,,Blanc,Colombard,IGP Comté Tolosan Blanc Colombard,3B003 CJ
+IGP,,Comté Tolosan,,,Rouge,,IGP Comté Tolosan Rouge,3R003
 IGP,,Cotes du Tarn,,,Blanc,Sauvignon blanc,IGP Cotes du Tarn Blanc Sauvignon blanc,3B812 AE
+IGP,,Cotes du Tarn,,,Blanc,,IGP Cotes du Tarn Blanc,3B812
 IGP,,Cotes du Tarn,,,Rosé,,IGP Cotes du Tarn Rosé,3S812
 IGP,,Cotes du Tarn,,,Rouge,,IGP Cotes du Tarn Rouge,3R812
 IGP,,Gard,,,Rouge,,IGP Gard Rouge,3R301
 IGP,,Aude,,,Rosé,,IGP Aude Rosé,3S111
 IGP,,Aude,,,Rouge,,IGP Aude Rouge,3R111
 IGP,,Ile de Beauté,,,Rosé,,IGP Ile de Beauté Rosé,3S202
+IGP,,Cité de Carcassonne,,,Rouge,,IGP Cité de Carcassonne Rouge,3R112
+IGP,,Atlantique,,,Rosé,Cabernet franc,IGP Atlantique Rosé Cabernet franc,3S008 BW
 IGP,,mousseux,,,,,IGP mousseux,VM_IG_IGP
 Autres alcools,,Bière > 2.8°,,,,,Bière > 2.8°,BIERE_SUP_2_8_BRASSERIE_TAUX_NORMAL
 Autres alcools,,Bière < 2.8°,,,,,Bière < 2.8°,BIERE_INF_2_8

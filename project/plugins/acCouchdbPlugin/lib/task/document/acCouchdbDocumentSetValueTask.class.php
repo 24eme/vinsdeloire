@@ -89,6 +89,13 @@ EOF;
             continue;
         }
 
+        if ($avlue == "true") {
+            $value = true;
+        }
+        if ($avlue == "false") {
+            $value = false;
+        }
+
         $output[] = $hash.":\"".$value."\" (".$doc->get($hash).")";
         $doc->set($hash, $value);
     }
