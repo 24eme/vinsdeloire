@@ -84,16 +84,17 @@ EOF;
             error_log("$hash n'est pas un couchedbJson pour ".$doc->_id);
             return;
         }
-        if($doc->get($hash) === $value) {
-
-            continue;
-        }
 
         if ($avlue == "true") {
             $value = true;
         }
         if ($avlue == "false") {
             $value = false;
+        }
+
+        if($doc->get($hash) === $value) {
+
+            continue;
         }
 
         $output[] = $hash.":\"".$value."\" (".$doc->get($hash).")";
