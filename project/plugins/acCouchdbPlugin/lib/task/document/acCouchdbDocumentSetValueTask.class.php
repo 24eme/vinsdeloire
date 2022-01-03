@@ -85,10 +85,10 @@ EOF;
             return;
         }
 
-        if ($avlue == "true") {
+        if ($value == "true") {
             $value = true;
         }
-        if ($avlue == "false") {
+        if ($value == "false") {
             $value = false;
         }
 
