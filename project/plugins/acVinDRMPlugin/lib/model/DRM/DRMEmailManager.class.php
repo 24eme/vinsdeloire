@@ -110,6 +110,13 @@ L’application de télédéclaration des DRM ". sfConfig::get('app_teledeclarat
           $email = $etablissement->getEmailTeledeclaration();
         }
 
+        if ($this->getUser()->getCompte()->getEmail() != $etablissement->getEmailTeledeclaration()) {
+            $email = [
+                $this->getUser()->getCompte()->getEmail(),
+                $etablissement->getEmailTeledeclaration()
+            ];
+        }
+
         $message = $this->getMailer()->compose(array(sfConfig::get('app_mail_from_email') => sfConfig::get('app_mail_from_name')), $email, $subject, $mess);
 
         $message->attach(new Swift_Attachment($pdfContent, $pdfName, 'application/pdf'));
