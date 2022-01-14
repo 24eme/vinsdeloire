@@ -870,7 +870,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 }
 
                 $drmPrecedente = DRMClient::getInstance()->find("DRM-".$this->drm->identifiant."-".DRMClient::getInstance()->getPeriodePrecedente($this->drm->periode));
-                if ($drmPrecedente && !$drmPrecedente->isTeledeclare()) {
+                if ($drmPrecedente && (!$drmPrecedente->isTeledeclare() || $this->drm->canSetStockDebutMois())) {
                     $drmPrecedente = null;
                 }
                 if ($drmPrecedente) {
