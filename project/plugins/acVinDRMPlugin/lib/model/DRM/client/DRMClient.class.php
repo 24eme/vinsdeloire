@@ -618,21 +618,25 @@ class DRMClient extends acCouchdbClient {
       if(isset($m[1])){
         $etbs = EtablissementClient::getInstance()->findAllByCvi($m[1]);
         foreach ($etbs as $id => $etb) {
+            if ($verbose) echo "INFO: etablissement potentiel ".$id."\n";
             if($etb->isActif() && $aggrement){
                 $etbaggrement = EtablissementClient::getInstance()->findByNoAccise($aggrement,false);
                 if($etbaggrement && $etbaggrement->_id == $etb->_id){
                     $etablissement = $etb;
+                    if ($verbose) echo "INFO: ".$id." sélectionné (même accise)\n";
                     break;
                 }
             }
             if($etb->isActif() && !$aggrement){
                 $etablissement = $etb;
+                if ($verbose) echo "INFO: ".$id." sélectionné par défaut (pas accise)\n";
                 break;
             }
         }
       }
       if(!$etablissement && $aggrement){
         $etablissement = EtablissementClient::getInstance()->findByNoAccise($aggrement,false);
+        if ($verbose) echo "INFO: ".$etablissement->_id." sélectionné par défaut sur la base du seul accise\n";
       }
       if (!$etablissement) {
         $idebntifiantCVI = (isset($m[1]))? $m[1] : "VIDE";
