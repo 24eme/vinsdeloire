@@ -54,7 +54,7 @@ class AlerteGenerationDRMManquantes extends AlerteGenerationDRM {
     public function updates() {
         $i=0;
         $campagneManager = new CampagneManager("08-01");
-        $limit_campagne = $campagneManager->getCampagneByDate((date(Y) - 1) . date('m-d'));
+        $limit_campagne = $campagneManager->getCampagneByDate((date('Y') - 1) . date('m-d'));
 
         foreach ($this->getAlertesOpen() as $alerteView) {
             $i++;
