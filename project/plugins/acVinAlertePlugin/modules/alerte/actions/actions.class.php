@@ -23,7 +23,12 @@ class alerteActions extends sfActions {
         $this->form->bind($request->getParameter($this->form->getName()));
         if ($this->form->isValid() && $this->form->hasFilters()) {
             $values = $this->createSearchValues($this->form);
+            if (!@$values['statut_courant']) {
+                $values['statut_courant'] = array('!FERME', '!EN_SOMMEIL');
+            }
             $search->setValues($values);
+        }else{
+            $search->setValues(array("statut_courant" => array('!FERME', '!EN_SOMMEIL')));
         }
         $this->alertesHistorique = $search->getElasticSearchResult($this->page);
         $this->nbResult = $search->getNbResult();
