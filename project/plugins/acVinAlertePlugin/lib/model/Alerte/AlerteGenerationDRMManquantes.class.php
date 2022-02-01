@@ -53,6 +53,9 @@ class AlerteGenerationDRMManquantes extends AlerteGenerationDRM {
 
     public function updates() {
         $i=0;
+        $campagneManager = new CampagneManager("08-01");
+        $limit_campagne = $campagneManager->getCampagneByDate((date(Y) - 1) . date('m-d'));
+
         foreach ($this->getAlertesOpen() as $alerteView) {
             $i++;
 
@@ -65,8 +68,9 @@ class AlerteGenerationDRMManquantes extends AlerteGenerationDRM {
                 $alerte = AlerteClient::getInstance()->find($alerteView->id);
                 $drm = DRMClient::getInstance()->find($id_document);
                 $etablissement = EtablissementClient::getInstance()->find($alerte->identifiant);
-              
-                if ($drm || ($etablissement->exclusion_drm == EtablissementClient::EXCLUSION_DRM_OUI)) {
+
+                if ($drm || ($etablissement->exclusion_drm == EtablissementClient::EXCLUSION_DRM_OUI) ||
+                    ($etablissement->statut == EtablissementClient::STATUT_SUSPENDU) || $alerte->campagne < $limit_campagne) {
                     // PASSAGE AU STATUT FERME
                     $alerte->updateStatut(AlerteClient::STATUT_FERME, AlerteClient::MESSAGE_AUTO_FERME, $this->getDate());
                     $alerte->save();
