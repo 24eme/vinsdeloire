@@ -49,8 +49,17 @@ class AlerteConsultationSearch {
         $elasticaQueryString = new acElasticaQueryQueryString();
         $elasticaQueryString->setDefaultOperator('AND');
         $qstr = '';
-        foreach ($this->values as $node => $value) {
-            $qstr .= 'doc.'.$node.':'.$value.' ';
+        foreach ($this->values as $node => $values) {
+            if (!is_array($values)) {
+                $values = array($values);
+            }
+            foreach($values as $value) {
+                if (strpos($value, '!') === 0) {
+                    $qstr .= '!(doc.'.$node.':'.substr($value, 1).') ';
+                }else{
+                    $qstr .= 'doc.'.$node.':'.$value.' ';
+                }
+            }
         }
         if ($qstr) {
             $elasticaQueryString->setQuery($qstr);
