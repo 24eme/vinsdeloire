@@ -30,10 +30,24 @@ class alerteActions extends sfActions {
         }else{
             $search->setValues(array("statut_courant" => array('!FERME', '!EN_SOMMEIL')));
         }
-        $this->alertesHistorique = $search->getElasticSearchResult($this->page);
-        $this->nbResult = $search->getNbResult();
-        $this->nbPage = ceil($this->nbResult / $search->getLimit());
-        $this->modificationStatutForm = new AlertesStatutsModificationForm($this->alertesHistorique);
+        $this->par_page = 5000;
+        $alertesSearch = $search->getElasticSearchResult(1, 5000);
+
+        $this->alertesByEtablissement = array();
+        foreach($alertesSearch as $a) {
+            $alerte = $a->getData()['doc'];
+            if (!isset($this->alertesByEtablissement[$alerte['identifiant']])) {
+                $this->alertesByEtablissement[$alerte['identifiant']] = $alerte;
+                $this->alertesByEtablissement[$alerte['identifiant']]['nb_alertes'] = 1;
+            }else{
+                $this->alertesByEtablissement[$alerte['identifiant']]['nb_alertes']++;
+            }
+        }
+
+
+        $this->nbPage = floor($this->nbResults / $this->par_page) + 1;
+        $this->nbAlertes = $search->getNbResult();
+        $this->nbResults = count($this->alertesByEtablissement);
         $this->page = (is_null($this->page)) ? 1 : $this->page;
     }
 
@@ -44,6 +58,16 @@ class alerteActions extends sfActions {
     public function executeMonEspace(sfWebRequest $request) {
         $this->etablissement = $this->getRoute()->getEtablissement();
         $this->alertesEtablissement = AlerteRechercheView::getInstance()->getRechercheByEtablissement($this->etablissement->identifiant);
+        $this->has_fermee = $request->getParameter('with_ferme');
+        if (!$this->has_fermee) {
+            $alertes = array();
+            foreach($this->alertesEtablissement as $a){
+                if ($a->key[AlerteRechercheView::KEY_STATUT] != AlerteClient::STATUT_FERME) {
+                    $alertes[] = $a;
+                }
+            }
+            $this->alertesEtablissement = $alertes;
+        }
         usort($this->alertesEtablissement, array('alerteActions', 'triResultAlertesDates'));
         $this->modificationStatutForm = new AlertesStatutsModificationForm($this->alertesEtablissement);
     }
