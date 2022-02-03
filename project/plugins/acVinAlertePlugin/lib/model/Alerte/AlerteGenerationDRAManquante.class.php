@@ -18,6 +18,9 @@ class AlerteGenerationDRAManquante extends AlerteGenerationDRM {
 
     public function creations($import = false) {
         echo "campagnes définies\n";
+        $campagneManager = new CampagneManager("08-01");
+        $limit_campagne = $campagneManager->getCampagneByDate((date('Y') - 1) . date('-m-d'));
+
         $campagne_periode_arr = $this->getPeriodesByCampagnes($import);
         if(!count($campagne_periode_arr)){
             echo "Aucune Alertes DRA Manquantes à ouvrir\n";
@@ -29,8 +32,16 @@ class AlerteGenerationDRAManquante extends AlerteGenerationDRM {
         $i=0;
         foreach ($etablissements as $etablissement) {
 
+            if ( ($etablissement->exclusion_drm == EtablissementClient::EXCLUSION_DRM_OUI) || ($etablissement->statut == EtablissementClient::STATUT_SUSPENDU) ) {
+                continue;
+            }
+
             foreach ($campagne_periode_arr as $campagne => $campagne_periode) {
               $i++;
+
+              if ($campagne < $limit_campagne) {
+                  continue;
+              }
 
               if($i > 200) {
                 sleep(1);
@@ -74,7 +85,7 @@ class AlerteGenerationDRAManquante extends AlerteGenerationDRM {
             $alerte = AlerteClient::getInstance()->find($alerteView->id);
             $dra = $this->findOneDRAForFirstDRM($id_document);
             $etablissement = EtablissementClient::getInstance()->find($alerte->identifiant);
-            if ($drm || ($etablissement->exclusion_drm == EtablissementClient::EXCLUSION_DRM_OUI) ||
+            if ($dra || ($etablissement->exclusion_drm == EtablissementClient::EXCLUSION_DRM_OUI) ||
                 ($etablissement->statut == EtablissementClient::STATUT_SUSPENDU) || $alerte->campagne < $limit_campagne) {
                 // PASSAGE AU STATUT FERME
                 $alerte->updateStatut(AlerteClient::STATUT_FERME, AlerteClient::MESSAGE_AUTO_FERME, $this->getDate());
