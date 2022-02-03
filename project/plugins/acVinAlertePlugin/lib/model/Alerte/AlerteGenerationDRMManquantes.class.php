@@ -21,12 +21,22 @@ class AlerteGenerationDRMManquantes extends AlerteGenerationDRM {
         echo "periodes définies\n";
         $etablissements = $this->getEtablissementsByTypeDR(EtablissementClient::TYPE_DR_DRM);
         echo "etablissements définies\n";
+        $campagneManager = new CampagneManager("08-01");
+        $limit_campagne = $campagneManager->getCampagneByDate((date('Y') - 1) . date('-m-d'));
 
         $i=0;
         foreach ($etablissements as $etablissement) {
 
+            if ( ($etablissement->exclusion_drm == EtablissementClient::EXCLUSION_DRM_OUI) || ($etablissement->statut == EtablissementClient::STATUT_SUSPENDU) ) {
+                continue;
+            }
+
             foreach ($periodes as $periode) {
               $i++;
+
+              if ($periode < $limit_campagne) {
+                  continue;
+              }
 
               if($i > 200) {
                 sleep(1);
