@@ -73,6 +73,7 @@
             	<table class="table_recap table_selection">
             		<thead>
             			<tr>
+                            <th>Région</th>
             				<th>Opérateur concerné</th>
             				<th>Nombre d'alertes</th>
             			</tr>
@@ -80,6 +81,7 @@
             		<tbody>
             		 <?php foreach ($alertesByEtablissement->getRawValue() as $identifiant => $alerte) : ?>
                          <tr>
+                             <td><?php echo $alerte['region']; ?></td>
             				<td><?php echo link_to($alerte['declarant_nom'],'alerte_etablissement',
                                                     array('identifiant' => $alerte['identifiant'])); ?></td>
             				<td><?php echo $alerte['nb_alertes']; ?> alertes </td>
