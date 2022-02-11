@@ -863,7 +863,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 $centilitrage = isset($all_contenances[$litrageLibelle]) ? $all_contenances[$litrageLibelle] : null;
                 $regimeNode = $this->drm->getOrAdd('crds')->getOrAdd($crd_regime);
                 $keyNode = null;
-                $reverseKey = self::cdrreversekeyid($regime, $genre, $couleur, $litrageLibelle);
+                $reverseKey = self::cdrreversekeyid($crd_regime, $genre, $couleur, $litrageLibelle);
                 if (isset($crd_precedente[$reverseKey])) {
                     $keyNode = array_pop($crd_precedente[$reverseKey]);
                 }
