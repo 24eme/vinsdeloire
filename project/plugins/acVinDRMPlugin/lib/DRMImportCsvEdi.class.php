@@ -296,7 +296,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
 
 
                 //Gestion du produit non connu
-                if ($is_default_produit) {
+                if ($is_default_produit && !$produit->stocks_debut->revendique) {
                     $produit->code_inao = $default_produit_inao;
                     $produit->produit_libelle = $default_produit_libelle;
                 }
@@ -354,7 +354,9 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                         continue;
                     }
                     $p = $this->drm->addProduit($this->cache2datas[$cacheid]['hash'], $this->cache2datas[$cacheid]['details_type'], $this->cache2datas[$cacheid]['denomination_complementaire'], $this->cache2datas[$cacheid]['tav']);
-                    $p->produit_libelle = $this->cache2datas[$cacheid]['libelle'];
+                    if (!$p->stocks_debut->revendique) {
+                        $p->produit_libelle = $this->cache2datas[$cacheid]['libelle'];
+                    }
                     $this->cache[$cacheid] = $p;
                 }
             }
