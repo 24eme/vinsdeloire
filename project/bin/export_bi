@@ -104,7 +104,7 @@ if test "$SAMBA_XLSOFT_IP" && test "$SAMBA_XLSOFT_SHARE" && test "$SAMBA_AUTH" &
     smbclient //$SAMBA_XLSOFT_IP/$SAMBA_XLSOFT_SHARE -A $SAMBA_AUTH -c "cd $SAMBA_XLSOFT_DIR ; put MDV_Fournisseurs.csv ; put PLV_Fournisseurs.csv ; put PLV_Clients.csv "
 fi
 if test "$SAMBA_BI_IP" && test "$SAMBA_BI_SHARE" && test "$SAMBA_AUTH" && test "$SAMBA_BI_DIR" ; then
-	smbclient //$SAMBA_BI_IP/$SAMBA_BI_SHARE -A $SAMBA_AUTH -c "cd $SAMBA_BI_DIR ; put export_bi_mouvements.csv ; put export_bi_mouvements_igp.csv; put export_bi_contrats.csv; put export_bi_contrats_igp.csv; put export_bi_dss.csv ; put export_bi_revendiques.csv ; put export_bi_etablissements.csv ; put export_bi_societes.csv ; put export_bi_drm.csv ; put export_bi_drm_stock.csv; put export_bi_drm_stock_short.csv ; put export_bi_mouvements_short.csv; put export_bi_mouvements_igp_short.csv; put export_bi_dss_short.csv; put export_bi_revendiques_short.csv; put export_bi_contrats_short.csv; put export_bi_liaisons.csv;"
+	smbclient //$SAMBA_BI_IP/$SAMBA_BI_SHARE -A $SAMBA_AUTH -c "cd $SAMBA_BI_DIR ; put export_bi_mouvements.csv ; put export_bi_mouvements_igp.csv; put export_bi_contrats.csv; put export_bi_contrats_igp.csv; put export_bi_dss.csv ; put export_bi_revendiques.csv ; put export_bi_etablissements.csv ; put export_bi_societes.csv ; put export_bi_drm.csv ; put export_bi_drm_stock.csv; put export_bi_drm_stock_short.csv ; put export_bi_mouvements_short.csv; put export_bi_mouvements_igp_short.csv; put export_bi_dss_short.csv; put export_bi_revendiques_short.csv; put export_bi_contrats_short.csv; put export_bi_liaisons.csv; put export_bi_produits.csv;"
 fi
 
 cd -

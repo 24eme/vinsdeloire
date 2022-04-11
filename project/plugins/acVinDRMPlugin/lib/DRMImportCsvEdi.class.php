@@ -296,7 +296,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
 
 
                 //Gestion du produit non connu
-                if ($is_default_produit) {
+                if ($is_default_produit && !$produit->stocks_debut->revendique) {
                     $produit->code_inao = $default_produit_inao;
                     $produit->produit_libelle = $default_produit_libelle;
                 }
@@ -354,7 +354,9 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                         continue;
                     }
                     $p = $this->drm->addProduit($this->cache2datas[$cacheid]['hash'], $this->cache2datas[$cacheid]['details_type'], $this->cache2datas[$cacheid]['denomination_complementaire'], $this->cache2datas[$cacheid]['tav']);
-                    $p->produit_libelle = $this->cache2datas[$cacheid]['libelle'];
+                    if (!$p->stocks_debut->revendique) {
+                        $p->produit_libelle = $this->cache2datas[$cacheid]['libelle'];
+                    }
                     $this->cache[$cacheid] = $p;
                 }
             }
@@ -861,7 +863,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 $centilitrage = isset($all_contenances[$litrageLibelle]) ? $all_contenances[$litrageLibelle] : null;
                 $regimeNode = $this->drm->getOrAdd('crds')->getOrAdd($crd_regime);
                 $keyNode = null;
-                $reverseKey = self::cdrreversekeyid($regime, $genre, $couleur, $litrageLibelle);
+                $reverseKey = self::cdrreversekeyid($crd_regime, $genre, $couleur, $litrageLibelle);
                 if (isset($crd_precedente[$reverseKey])) {
                     $keyNode = array_pop($crd_precedente[$reverseKey]);
                 }
@@ -870,7 +872,7 @@ class DRMImportCsvEdi extends DRMCsvEdi {
                 }
 
                 $drmPrecedente = DRMClient::getInstance()->find("DRM-".$this->drm->identifiant."-".DRMClient::getInstance()->getPeriodePrecedente($this->drm->periode));
-                if ($drmPrecedente && !$drmPrecedente->isTeledeclare()) {
+                if ($drmPrecedente && (!$drmPrecedente->isTeledeclare() || $this->drm->canSetStockDebutMois())) {
                     $drmPrecedente = null;
                 }
                 if ($drmPrecedente) {

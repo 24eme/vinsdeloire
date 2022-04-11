@@ -109,10 +109,11 @@ class Alerte extends BaseAlerte {
         return AlerteClient::$alertes_libelles[$this->getTypeAlerte()] . ' (' . $this->libelle_document . ')';
     }
 
-    protected function doSave() {
+    public function save() {
         if ($statut = $this->getStatut()) {
             $this->statut_courant = $statut->statut;
         }
+        return parent::save();
     }
 
 }
