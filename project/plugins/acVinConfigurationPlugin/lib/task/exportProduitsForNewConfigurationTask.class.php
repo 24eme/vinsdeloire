@@ -35,7 +35,7 @@ EOF;
 
     $produits = ConfigurationClient::getCurrent()->getProduits();
 
-    echo sprintf("#interpro;categorie_libelle;categorie_code;genre_libelle;genre_code;denomination_libelle;denomination_code;mention_libelle;mention_code;lieu_libelle;lieu_code;couleur_libelle;couleur_code;cepage_libelle;cepage_code;departements;douane_code;douane_libelle;douane_taxe;douane_date;douane_noeud;cvo_taxe;cvo_date;cvo_noeud;repli_entree;repli_sorti;declassement_entree;declassement_sorti;densite;labels;code_produit;code_produit_noeud;code_analytique;code_comptable_noeud;code_douane;code_douane_noeud;alias_produit;format_libelle;format_libelle_noeud;cepages autorises\n");
+    echo sprintf("#interpro;categorie_libelle;categorie_code;genre_libelle;genre_code;denomination_libelle;denomination_code;mention_libelle;mention_code;lieu_libelle;lieu_code;couleur_libelle;couleur_code;cepage_libelle;cepage_code;departements;douane_code;douane_libelle;douane_taxe;douane_date;douane_noeud;cvo_taxe;cvo_date;cvo_noeud;repli_entree;repli_sorti;declassement_entree;declassement_sorti;densite;labels;code_produit;code_produit_noeud;code_analytique;code_comptable_noeud;code_douane;code_douane_noeud;alias_produit;format_libelle;format_libelle_noeud;cepages_autorises;hash_produit\n");
 
     foreach($produits as $hash => $produit) {
         $master_comptable = null;
@@ -137,7 +137,7 @@ EOF;
           $cepages_autorises = implode($produit->getCepagesAutorises(),"|") ;
         }
 
-        echo sprintf("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n","declaration",$certificationLibelle,$certificationKey,
+        echo sprintf("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n","declaration",$certificationLibelle,$certificationKey,
         $genreLibelle,$genreKey,
         $appellationLibelle,$appellationKey,
         $mentionLibelle,$mentionKey,
@@ -151,7 +151,7 @@ EOF;
         $densite,$labels,$code_produit,$code_produit_noeud,
         $code_analytique,$code_comptable_noeud,
         $code_douane,$code_douane_noeud,$alias_produit,
-        $format_libelle,$format_libelle_noeud,$cepages_autorises
+        $format_libelle,$format_libelle_noeud,$cepages_autorises,$produit->getHash()
       );
     }
   }
