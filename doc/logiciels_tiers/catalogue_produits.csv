@@ -346,13 +346,15 @@ Autres vins,tranquilles,Vins sans IG,,,Rouge,,Vins sans IG Rouge,4R999
 Autres vins,tranquilles,Vins tranquilles étrangers,,,,,Vins tranquilles étrangers,VT_ETRANGERS
 Autres vins,tranquilles,,,,,,Autres vins tranquilles,VT_SANS_IG_AUTRES
 Autres vins,tranquilles,Vins tranquilles sans IG autres Premix,,,,,Vins tranquilles sans IG autres Premix,VT_SANS_IG_AUTRES_PREMIX
+Autres vins,tranquilles,Vins tranquilles sans IG avec cépages,,,,,Vins tranquilles sans IG avec cépages,VT_SANS_IG_CEPAGE
 Autres vins,Mousseux,Vins sans IG,,,Blanc,,Vins sans IG Mousseux Blanc,4B999M
 Autres vins,Mousseux,Vins sans IG,,,Rouge,,Vins sans IG Mousseux Rouge,4R999M
 Autres vins,Mousseux,Vins sans IG,,,Rosé,,Vins sans IG Mousseux Rosé,4S999M
 Autres vins,Mousseux,Vins mousseux étrangers,,,,,Vins mousseux étrangers,VM_ETRANGERS
 Autres vins,Mousseux,,,,,,Autres vins Mousseux,VM_SANS_IG_AUTRES
-Autres vins,Pétillants,,,,,,Autres vins Pétillants,PETILLANTS
-Autres vins,Pétillants,PREMIX,,,,,Autres vins Pétillants PREMIX,PETILLANTS_PREMIX
+Autres vins,Mousseux,Vins mousseux sans IG avec cépages,,,,,Vins mousseux sans IG avec cépages Mousseux,VM_SANS_IG_CEPAGE
+Autres vins,Pétillants,,,,,,Autres vins Pétillants,PETILLANTS_INF_8_5
+Autres vins,Pétillants,PREMIX,,,,,Autres vins Pétillants PREMIX,PETILLANTS_INF_8_5_PREMIX
 Autres,,,Lies. Bourbes et vins à éliminer,,,,Lies. Bourbes et vins à éliminer,5X999V
 Autres,,,Lies et Bourbes,,,,Lies et Bourbes,4X999V
 Autres,,DRA (Dépassement de Rendement Autorisé),,,Blanc,,DRA (Dépassement de Rendement Autorisé) Blanc,4B988Y
@@ -414,6 +416,7 @@ AOP,,Saint Pourçain,,,Rosé,,Saint Pourçain Rosé,1S430S
 AOP,,Alsace grand cru,SGN,,Blanc,,Alsace grand cru Blanc SGN,1B037S 1
 AOP,,Alsace grand cru,SGN,,Blanc,Riesling,Alsace grand cru Blanc SGN Riesling,1B037D14
 AOP,,Alsace grand cru,,Klevener de Heiligenstein,Blanc,,Alsace grand cru Klevener de Heiligenstein Blanc,1B054S
+AOP,,Alsace grand cru,,,Blanc,Altenberg de Bergbieten,Alsace grand cru Blanc Altenberg de Bergbieten,1B002S 4
 AOP,,Gaillac,,,Rouge,,Gaillac Rouge,1R128S
 AOP,,Gaillac,,,Rosé,,Gaillac Rosé,1S128S
 AOP,,Gaillac,,,Blanc,,Gaillac Blanc,1B128S
@@ -489,7 +492,7 @@ AOP,,Montagne Saint Emilion,,,,,Montagne Saint Emilion,1R145S
 AOP,,Saint-Julien,,,,,Saint-Julien,1R160S
 AOP,,Rasteau,,,Rouge,,Rasteau Rouge,1R187S
 AOP,,Rivesaltes,,,Rosé,,Rivesaltes Rosé,1S188N
-AOP,,Rivesaltes,,,Blanc,,Rivesaltes Blanc,1B188N
+AOP,,Rivesaltes,,,Blanc,,Rivesaltes Blanc,1B188N01
 AOP,,Rivesaltes,Ambré,,Rosé,,Rivesaltes Rosé Ambré,1S188NA0
 AOP,,Rivesaltes,Tuilé,,Rosé,,Rivesaltes Rosé Tuilé,1S188NT0
 AOP,,Rivesaltes,Grenat,,Rouge,,Rivesaltes Rouge Grenat,1R188N02
@@ -616,7 +619,7 @@ IGP,,Atlantique,,,Rosé,Cabernet franc,IGP Atlantique Rosé Cabernet franc,3S008
 IGP,,mousseux,,,,,IGP mousseux,VM_IG_IGP
 Autres alcools,,Bière > 2.8°,,,,,Bière > 2.8°,BIERE_SUP_2_8_BRASSERIE_TAUX_NORMAL
 Autres alcools,,Bière < 2.8°,,,,,Bière < 2.8°,BIERE_INF_2_8
-Autres alcools,,Cidres,,,,,Cidres,CIDRES
+Autres alcools,,Cidres,,,,,Cidres,CIDRES_INF_8_5
 Autres alcools,,Autres produits intermédiaires (Porto. Pineau...) > 18°,,,,,Autres produits intermédiaires (Porto. Pineau...) > 18°,AUTRES_PI_SUP_18
 Autres alcools,,Rhums des DOM,,,,,Rhums des DOM,RHUM_TRADITIONNEL_DOM_ART_1
 Autres alcools,,Autres produits intermédiaires (Porto. Pineau...) < 18°,,,,,Autres produits intermédiaires (Porto. Pineau...) < 18°,AUTRES_PI_INF_18
@@ -630,7 +633,7 @@ Autres alcools,,Autres alcools < 18° - PREMIX,,,,,Autres alcools < 18° - PREMI
 Autres alcools,,Matières premières pour spiritueux (chap. 2208 tarif des douanes),,,,,Matières premières pour spiritueux (chap. 2208 tarif des douanes),MATIERES_PREMIERES_SPIRITUEUX
 Autres alcools,,Matières premières pour alcools,,,,,Matières premières pour alcools,MATIERES_PREMIERES_ALCOOLS
 Autres alcools,,,,,,,Autres alcools,
-Autres alcools,,Poirés,,,,,Poirés,POIRES
+Autres alcools,,Poirés,,,,,Poirés,POIRES_8_5
 Autres alcools,,Rhums des DOM (art. 2),,,,,Rhums des DOM (art. 2),RHUM_TRADITIONNEL_DOM_ART_2
 Autres alcools,,Muscat de Rivesaltes,,,,,Muscat de Rivesaltes,1B184N
 AOP,,Châteaumeillant,,,Rouge,,Châteaumeillant Rouge,1R700
